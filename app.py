@@ -2,11 +2,7 @@ import streamlit as st
 import tensorflow as tf
 import numpy as np
 from PIL import Image
-import pandas as pd
-
-# ----------------------------------------------------
-# MOBILE NET V3 PREPROCESSING
-# ----------------------------------------------------
+import pandas as pd# ----------------------------------------------------
 from tensorflow.keras.applications.mobilenet_v3 import preprocess_input
 
 # ----------------------------------------------------
@@ -14,12 +10,17 @@ from tensorflow.keras.applications.mobilenet_v3 import preprocess_input
 # ----------------------------------------------------
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model("mobilenetv3_insect_model.h5")  # your model file
+    model = tf.keras.models.load_model("e:/isect dataset/mobilenetv2_insect.keras")  # your model file
     return model
 
 @st.cache_data
 def load_csv():
-    df = pd.read_csv("insect_info.csv")
+    expected_cols = [
+    "Common Name", "Scientific Name", "Host Crops", "Damage Symptoms",
+    "IPM Measures", "Chemical Control", "Kingdom", "Phylum", "Class",
+    "Order", "Family", "Genus", "Species"
+    ]
+    df = pd.read_excel("e:/insect species.xlsx")
     return df
 
 model = load_model()
@@ -30,7 +31,7 @@ insect_df = load_csv()
 #  PREDICTION FUNCTION
 # ----------------------------------------------------
 def predict_image(image):
-    img = image.resize((224, 224))   # MobileNetV3 input size
+    img = image.resize((160, 160))   # MobileNetV3 input size
     img = np.array(img)
 
     img = preprocess_input(img)      # MobileNetV3 preprocessing
@@ -47,12 +48,13 @@ def predict_image(image):
 #  PAGE 1: WELCOME PAGE
 # ----------------------------------------------------
 def welcome_page():
-    st.title("🪲 Insect Species Classification System")
-    st.subheader("Developed by Department of Botany, St. Joseph's College (Autonomous), Trichy")
+    st.title("🐞INSECTIFICA🔍")
+    st.write("""Insect Species Classification System""")
+    st.subheader("Developed by Department of Biotechnology, St. Joseph's College (Autonomous), Trichy")
 
     st.write("""
         This AI-powered system identifies **insects & pests** up to genus–species level  
-        using a MobileNetV3 deep learning model trained on **400 species**.
+        providing reliable support for agricultural and biological studies..
         
         👉 Click **Next** to continue.
     """)
@@ -65,13 +67,22 @@ def welcome_page():
 #  PAGE 2: ABOUT DEPARTMENT
 # ----------------------------------------------------
 def about_page():
-    st.title("🏛️ About the Department of Botany")
+    st.title("🏛️ About the Insectifica")
     st.write("""
-        The Department of Botany at St. Joseph’s College, Trichy  
-        is a leader in **plant sciences, biodiversity, ecology, and agriculture**.
-        
-        This project is developed as part of our **Digital Agriculture & AI** initiative.
-    """)
+**Insectifica** is an educational and research-support application developed by the  
+**Department of Biotechnology, St. Joseph’s College (Autonomous), Trichy**.
+
+The app is designed to serve as a reliable and user-friendly digital platform for understanding, identifying, and learning about a wide range of insect species commonly encountered in agricultural and ecological environments.
+
+Insectifica integrates essential biological information, classification details, and reference data into a simple and accessible interface. Whether you are a student exploring entomology, a researcher conducting field studies, or an enthusiast seeking quick information, the app provides accurate insights to support learning needs.
+
+With its structured layout, smooth navigation, and clear presentation of scientific data, Insectifica enhances academic engagement and makes insect identification more intuitive. It bridges traditional learning with modern digital tools, offering easy access to taxonomy, host plants, damage symptoms, and control measures—all in one place.
+
+**Developed By:**  
+Department of Biotechnology  
+St. Joseph’s College (Autonomous), Trichy – 620002
+""")
+
 
     if st.button("Proceed to Classification ➡️"):
         st.session_state.page = "classification"
@@ -89,15 +100,14 @@ def classification_page():
 
     if uploaded_file:
         img = Image.open(uploaded_file)
-        st.image(img, caption="Uploaded Insect Image", use_column_width=True)
+        st.image(img, caption="Uploaded Insect Image", use_container_width=True)
 
         class_index, confidence = predict_image(img)
 
         row = insect_df.iloc[class_index]
 
-        st.success(f"**Predicted Species:** {row['Common Name']} ({row['Scientific Name']})")
-        st.write(f"### Confidence: {confidence*100:.2f}%")
-
+        st.success(f"{row['Common Name']} ({row['Scientific Name']})")
+       
         st.write("## 🧬 Taxonomy")
         st.write(f"**Kingdom:** {row['Kingdom']}")
         st.write(f"**Phylum:** {row['Phylum']}")
