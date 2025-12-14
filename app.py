@@ -11,14 +11,14 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 st.markdown("""
 <style>
 .stApp {
-    background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.02),
-        rgba(0,0,0,0.01)
-    );
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(0,0,0,0.04) 1px, transparent 1px),
+        radial-gradient(circle at 80% 80%, rgba(0,0,0,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
 }
 </style>
 """, unsafe_allow_html=True)
+
 
 
 
