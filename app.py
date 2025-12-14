@@ -10,7 +10,7 @@ from tensorflow.keras.applications.mobilenet_v3 import preprocess_input
 # ----------------------------------------------------
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model("e:/isect dataset/mobilenetv2_insect.keras")  # your model file
+    model = tf.keras.models.load_model("mobilenetv2_insect.tflite")  # your model file
     return model
 
 @st.cache_data
@@ -20,7 +20,7 @@ def load_csv():
     "IPM Measures", "Chemical Control", "Kingdom", "Phylum", "Class",
     "Order", "Family", "Genus", "Species"
     ]
-    df = pd.read_excel("e:/insect species.xlsx")
+    df = pd.read_excel("insect species.xlsx")
     return df
 
 model = load_model()
