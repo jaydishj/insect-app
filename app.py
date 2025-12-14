@@ -10,7 +10,7 @@ from tensorflow.keras.applications.mobilenet_v3 import preprocess_input
 # ----------------------------------------------------
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model("mobilenetv2_insect.tflite")  # your model file
+    model = tf.keras.models.load_model("mobilenetv2_insect.keras")  # your model file
     return model
 
 @st.cache_data
