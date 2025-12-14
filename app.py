@@ -3,7 +3,7 @@ import tensorflow as tf
 import numpy as np
 from PIL import Image
 import pandas as pd# ----------------------------------------------------
-from tensorflow.keras.applications.mobilenet_v3 import preprocess_input
+from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 
 # ----------------------------------------------------
 #  LOAD MODEL & CSV
