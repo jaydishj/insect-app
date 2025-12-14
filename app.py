@@ -11,17 +11,15 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 st.markdown("""
 <style>
 .stApp {
-    background-image: 
-        repeating-linear-gradient(
-            45deg,
-            rgba(0,0,0,0.03),
-            rgba(0,0,0,0.03) 1px,
-            transparent 1px,
-            transparent 40px
-        );
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.02),
+        rgba(0,0,0,0.01)
+    );
 }
 </style>
 """, unsafe_allow_html=True)
+
 
 
 @st.cache_resource
