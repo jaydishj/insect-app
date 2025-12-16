@@ -27,7 +27,7 @@ st.markdown("""
 
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model("mobilenetv2_insect.keras")  # your model file
+    model = tf.keras.models.load_model("mobilenetv2_insect_best.keras")  # your model file
     return model
 
 @st.cache_data
