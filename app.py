@@ -14,6 +14,15 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+st.set_page_config(
+    page_title="Insectifica | Insect & Pest Identification",
+    page_icon="🐞",
+    layout="centered"
+)
+
+load_custom_css()
+
+
 st.markdown("""
 <style>
 .stApp {
@@ -28,6 +37,97 @@ st.markdown("""
 }
 </style>
 """, unsafe_allow_html=True)
+def load_custom_css():
+    st.markdown(
+        """
+        <style>
+        /* App background */
+        .stApp {
+            background: linear-gradient(135deg, #f8fff8, #eef7ff);
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        /* Main title */
+        h1 {
+            color: #1b5e20;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        /* Section headers */
+        h2, h3 {
+            color: #0d47a1;
+            font-weight: 600;
+            margin-top: 1.2rem;
+        }
+
+        /* Paragraph text */
+        p, li {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #333333;
+        }
+
+        /* Bullet points */
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        /* Divider styling */
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(to right, #c8e6c9, #bbdefb);
+            margin: 1.5rem 0;
+        }
+
+        /* Button styling */
+        div.stButton > button {
+            background: linear-gradient(90deg, #2e7d32, #1565c0);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 0.6em 1.8em;
+            border-radius: 25px;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        div.stButton > button:hover {
+            background: linear-gradient(90deg, #1b5e20, #0d47a1);
+            transform: scale(1.05);
+        }
+
+        /* Center buttons */
+        div.stButton {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.2rem;
+        }
+
+        /* Cards (optional section boxes) */
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer text */
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            margin-top: 2rem;
+        }
+
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
 
 
