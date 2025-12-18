@@ -73,22 +73,6 @@ st.markdown("""
 
 
 
-st.markdown("""
-<style>
-.stApp {
-    background-color: transparent;
-    background-image:
-        linear-gradient(135deg, rgba(0,0,0,0.04) 25%, transparent 25%),
-        linear-gradient(225deg, rgba(0,0,0,0.04) 25%, transparent 25%),
-        linear-gradient(315deg, rgba(0,0,0,0.04) 25%, transparent 25%),
-        linear-gradient(45deg,  rgba(0,0,0,0.04) 25%, transparent 25%);
-    background-size: 40px 40px;
-    background-position: 20px 0, 20px 0, 0 0, 0 0;
-}
-</style>
-""", unsafe_allow_html=True)
-
-
 @st.cache_resource
 def load_model():
     model = tf.keras.models.load_model("mobilenetv2_insect_best.keras")  # your model file
