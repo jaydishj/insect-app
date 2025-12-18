@@ -70,14 +70,16 @@ def predict_image(image):
 # ----------------------------------------------------
 #  PAGE 1: WELCOME PAGE
 # ----------------------------------------------------
-def welcome_page():
-   st.set_page_config(
-        page_title="Insectifica | Insect & Pest Identification",
-        page_icon="🐞",
-        layout="centered"
-    )
 
-   st.title("🐞 INSECTIFICA")
+# Page configuration (MUST be first Streamlit command)
+st.set_page_config(
+    page_title="Insectifica | Insect & Pest Identification",
+    page_icon="🐞",
+    layout="centered"
+)
+
+def welcome_page():
+    st.title("🐞 INSECTIFICA")
     st.subheader("Insect and Pest Identification Mobile Application")
 
     st.markdown(
@@ -102,7 +104,7 @@ def welcome_page():
         """
         The primary goal of Insectifica is to provide **fast and accurate identification** of insects  
         and pests using a simple photograph captured through a smartphone camera.  
-        
+
         Whether encountering an unfamiliar insect in a home environment, a garden, or an  
         agricultural field, Insectifica delivers **reliable identification results** along with  
         **educational insights**, enabling informed decision-making and learning.
@@ -129,26 +131,35 @@ def welcome_page():
     )
 
     st.divider()
+
     if st.button("Next ➡️"):
         st.session_state.page = "about"
+
+
+# Run page
+if "page" not in st.session_state:
+    st.session_state.page = "welcome"
+
+if st.session_state.page == "welcome":
+    welcome_page()
 
 # ----------------------------------------------------
 #  PAGE 2: ABOUT DEPARTMENT
 # ----------------------------------------------------
 def about_page():
-    st.title("🏛️ About the Insectifica")
+    st.title("🏛️ About Insectifica")
+
     st.header("✨ Key Features")
     st.markdown(
         """
-        • **Instant Identification:** Rapid insect and arthropod identification using machine learning.  
-        • **Comprehensive Species Database:** Detailed profiles of butterflies, ants, beetles, moths,  
-          spiders, and agricultural pests.  
-        • **Pest vs. Beneficial Indicator:** Classification of species as harmful, neutral, or beneficial  
+        • **Instant Identification:** Rapid insect and arthropod identification using advanced machine learning.  
+        • **Comprehensive Species Database:** Detailed profiles of butterflies, ants, beetles, moths, spiders,  
+          and agricultural pests.  
+        • **Pest vs. Beneficial Indicator:** Clear classification of species as harmful, neutral, or beneficial  
           (pollinators or natural predators).  
-        • **Habitat & Behaviour Insights:** Educational content covering life cycles, feeding habits,  
-          and ecological significance.  
-        • **Identification History:** Personal log of past identifications for academic and research use.  
-        • **Community & Sharing:** Share discoveries and collaborate through a nature-focused community.
+        • **Habitat & Behaviour Insights:** Educational content on life cycles, feeding habits, and ecological roles.  
+        • **Identification History:** Personal log of past identifications for academic, research, and reference use.  
+        • **Community & Sharing:** Share discoveries and collaborate through a nature-focused user community.
         """
     )
 
@@ -157,10 +168,10 @@ def about_page():
     st.header("👥 Use Cases")
     st.markdown(
         """
-        • **Gardeners & Homeowners:** Identify pests and learn eco-friendly management strategies.  
-        • **Students & Educators:** Support biology education and field-based learning activities.  
-        • **Farmers & Agriculturists:** Early detection of crop pests and informed pest management.  
-        • **Nature Enthusiasts:** Explore biodiversity and document insect sightings.
+        • **Gardeners & Homeowners:** Identify pests and learn eco-friendly and sustainable management strategies.  
+        • **Students & Educators:** Support biology education through real-world field identification activities.  
+        • **Farmers & Agriculturists:** Enable early detection of agricultural pests and informed pest management decisions.  
+        • **Nature Enthusiasts:** Explore local biodiversity and maintain personal insect sighting records.
         """
     )
 
@@ -170,9 +181,9 @@ def about_page():
     st.markdown(
         """
         Insectifica bridges the gap between expert entomological knowledge and everyday curiosity.  
-        By combining artificial intelligence with validated scientific data, it transforms routine  
-        insect encounters into educational opportunities, reduces misinformation, and supports  
-        ecological awareness and research.
+        By integrating artificial intelligence with scientifically verified data, the application  
+        transforms insect encounters into educational experiences, reduces misinformation, and  
+        supports biodiversity awareness and ecological research.
         """
     )
 
@@ -181,9 +192,10 @@ def about_page():
     st.header("📸 Notes & Best Practices")
     st.markdown(
         """
-        • Capture clear, well-focused images.  
-        • Take photographs from multiple angles when possible.  
-        • Ensure key features such as wings, legs, and antennae are visible for improved accuracy.
+        • Capture clear, well-focused images under good lighting conditions.  
+        • Take photographs from multiple angles whenever possible.  
+        • Ensure key anatomical features such as wings, legs, antennae, and body patterns are visible  
+          for improved identification accuracy.
         """
     )
 
@@ -205,20 +217,20 @@ def about_page():
         Dr. A. Edward  
 
         **Development & Programming:**  
-         Dr. Pavulraj Michael  
         Dr. A. Edward  
         Dr. V. Swabna  
         Dr. A. Asha Monica  
         Dr. Pavulraj Michael  
 
         **Scientific Data Verification:**  
-        Dr. Pavulraj Michael  
         Dr. V. Swabna  
         Dr. A. Asha Monica  
         Dr. Pavulraj Michael  
 
         **Guidance & Supervision:**  
-        Dr. Pavulraj Michael
+        Dr. Pavulraj Michael SJ
+        Rector , st.joseph's college (Autonomous)  
+        Tiruchirappalli – 620 002
         """
     )
 
@@ -233,10 +245,8 @@ def about_page():
         """
     )
 
-
     if st.button("Proceed to Classification ➡️"):
         st.session_state.page = "classification"
-
 
 # ----------------------------------------------------
 #  PAGE 3: CLASSIFICATION PAGE
