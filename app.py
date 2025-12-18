@@ -222,7 +222,7 @@ def about_page():
         Dr. Pavulraj Michael  
 
         **Guidance & Supervision:**  
-        Dr. Pavulraj Michael SJ
+        Dr. Pavulraj Michael SJ  
         Rector , St. Joseph’s College (Autonomous)   
         Tiruchirappalli – 620 002
         """
