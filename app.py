@@ -12,45 +12,47 @@ def load_custom_css():
     st.markdown(
         """
         <style>
-        /* Main App Background */
+        /* Main background */
         .stApp {
-            background: linear-gradient(135deg, #f0f7ff, #e6f4f1);
-            font-family: "Segoe UI", sans-serif;
+            background-color: #f5f7fa;
         }
 
-        /* Titles */
-        h1, h2, h3 {
-            color: #0b3c5d;
+        /* Title styling */
+        h1 {
+            color: #1b4332;
+            text-align: center;
             font-weight: 700;
         }
 
-        /* Section Cards */
-        div[data-testid="stMarkdownContainer"] {
-            background-color: #ffffff;
-            padding: 18px 22px;
-            border-radius: 14px;
-            box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.08);
-            margin-bottom: 18px;
+        /* Header styling */
+        h2, h3 {
+            color: #2d6a4f;
+        }
+
+        /* Markdown text */
+        p, li {
+            font-size: 16px;
+            line-height: 1.6;
         }
 
         /* Buttons */
-        .stButton > button {
-            background: linear-gradient(90deg, #0b8457, #1abc9c);
+        div.stButton > button {
+            background-color: #40916c;
             color: white;
+            border-radius: 10px;
+            padding: 0.6em 1.2em;
             font-weight: 600;
-            border-radius: 30px;
-            padding: 10px 26px;
             border: none;
         }
 
-        .stButton > button:hover {
-            background: linear-gradient(90deg, #08664a, #16a085);
-            transform: scale(1.02);
+        div.stButton > button:hover {
+            background-color: #2d6a4f;
+            color: #ffffff;
         }
 
-        /* Divider spacing */
+        /* Divider */
         hr {
-            margin: 30px 0px;
+            border: 1px solid #d8f3dc;
         }
         </style>
         """,
