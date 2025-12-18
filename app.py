@@ -12,57 +12,50 @@ def load_custom_css():
     st.markdown(
         """
         <style>
-        /* Main background */
+        /* Main App Background */
         .stApp {
-            background-color: #f5f7fa;
+            background: linear-gradient(135deg, #f0f7ff, #e6f4f1);
+            font-family: "Segoe UI", sans-serif;
         }
 
-        /* Title styling */
-        h1 {
-            color: #1b4332;
-            text-align: center;
+        /* Titles */
+        h1, h2, h3 {
+            color: #0b3c5d;
             font-weight: 700;
         }
 
-        /* Header styling */
-        h2, h3 {
-            color: #2d6a4f;
-        }
-
-        /* Markdown text */
-        p, li {
-            font-size: 16px;
-            line-height: 1.6;
+        /* Section Cards */
+        div[data-testid="stMarkdownContainer"] {
+            background-color: #ffffff;
+            padding: 18px 22px;
+            border-radius: 14px;
+            box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.08);
+            margin-bottom: 18px;
         }
 
         /* Buttons */
-        div.stButton > button {
-            background-color: #40916c;
+        .stButton > button {
+            background: linear-gradient(90deg, #0b8457, #1abc9c);
             color: white;
-            border-radius: 10px;
-            padding: 0.6em 1.2em;
             font-weight: 600;
+            border-radius: 30px;
+            padding: 10px 26px;
             border: none;
         }
 
-        div.stButton > button:hover {
-            background-color: #2d6a4f;
-            color: #ffffff;
+        .stButton > button:hover {
+            background: linear-gradient(90deg, #08664a, #16a085);
+            transform: scale(1.02);
         }
 
-        /* Divider */
+        /* Divider spacing */
         hr {
-            border: 1px solid #d8f3dc;
+            margin: 30px 0px;
         }
         </style>
         """,
         unsafe_allow_html=True
     )
-st.set_page_config(
-    page_title="Insectifica | Insect & Pest Identification",
-    page_icon="🐞",
-    layout="centered"
-)
 
 load_custom_css()   
 st.markdown("""
