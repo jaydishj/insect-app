@@ -77,7 +77,7 @@ def welcome_page():
         layout="centered"
     )
 
-    st.title("🐞 INSECTIFICA")
+   st.title("🐞 INSECTIFICA")
     st.subheader("Insect and Pest Identification Mobile Application")
 
     st.markdown(
