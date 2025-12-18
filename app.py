@@ -181,11 +181,8 @@ def welcome_page():
     )
 
     st.divider()
-
-  if st.button("Next ➡️"):
-    st.session_state.page = "about"
-    st.rerun()
-
+    if st.button("Next ➡️"):
+        st.session_state.page = "about"
 
 
 # ----------------------------------------------------
