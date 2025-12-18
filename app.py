@@ -136,12 +136,6 @@ def welcome_page():
         st.session_state.page = "about"
 
 
-# Run page
-if "page" not in st.session_state:
-    st.session_state.page = "welcome"
-
-if st.session_state.page == "welcome":
-    welcome_page()
 
 # ----------------------------------------------------
 #  PAGE 2: ABOUT DEPARTMENT
