@@ -8,12 +8,6 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 # ----------------------------------------------------
 #  LOAD MODEL & CSV
 # ----------------------------------------------------
-st.markdown("""
-<style>
-[data-testid="stToolbar"] {display: none !important;}
-</style>
-""", unsafe_allow_html=True)
-
 st.set_page_config(
     page_title="Insectifica | Insect & Pest Identification",
     page_icon="🐞",
@@ -21,6 +15,13 @@ st.set_page_config(
 )
 
 load_custom_css()
+st.markdown("""
+<style>
+[data-testid="stToolbar"] {display: none !important;}
+</style>
+""", unsafe_allow_html=True)
+
+
 
 
 st.markdown("""
