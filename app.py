@@ -129,7 +129,7 @@ st.set_page_config(
 )
 
 def welcome_page():
-    st.title("🐞 INSECTIFICA")
+    st.title("🐞 INSECTIFICA 🔍")
     st.subheader("Insect and Pest Identification Mobile Application")
 
     st.markdown(
