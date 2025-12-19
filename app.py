@@ -385,7 +385,9 @@ def developers_page():
     st.markdown("""
     **Department of Biotechnology**  
     St. Joseph’s College (Autonomous)  
-    Tiruchirappalli – 620 002
+    Tiruchirappalli – 620 002  
+    Contact mail id:edward_bt@mail.sjctni.edu  
+    cisgene.edward@gmail.com
     """)
 
     st.divider()
