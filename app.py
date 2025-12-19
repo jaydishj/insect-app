@@ -152,7 +152,6 @@ def how_it_works_section():
         </ul>
         """
     )
-
     st.info(
         "💡 Tip: For best accuracy, ensure the insect is well-lit and clearly visible."
     )
