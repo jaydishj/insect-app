@@ -232,10 +232,10 @@ def classification_page():
         if st.button("⬅️ Back"):
             st.session_state.page = "intro"
         return
+  
+        st.image(img, use_container_width=True)
 
-    st.image(img, use_container_width=True)
-
-    class_index, confidence = predict_image(img)
+        class_index, confidence = predict_image(img)
 
         row = insect_df.iloc[class_index]
 
