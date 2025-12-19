@@ -261,8 +261,6 @@ def features_page():
 
     st.divider()
 
-    if st.button("⬅️ Back"):
-        st.session_state.page = "about_app"
 
 
     st.header("📸 Best Practices")
