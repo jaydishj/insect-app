@@ -149,7 +149,7 @@ def intro_page():
         """
     )
 
-        st.info(
+    st.info(
         "💡 Tip: For best accuracy, ensure the insect is well-lit and clearly visible."
     )
 
