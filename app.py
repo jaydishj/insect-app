@@ -22,13 +22,9 @@ st.set_page_config(
 # --- Custom CSS for UI/UX ---
 st.markdown("""
 <style>
-/* App background with image */
+/* App background */
 .stApp {
-    background-image: url('https://www.freepik.com/free-vector/background-minimalist-line-color-fresh_34924288.htm#fromView=search&page=1&position=15&uuid=27138934-9d15-4116-bee0-ac9997e0c901&query=linear+ackgroud');  /* Replace with your desired image URL */
-    background-size: cover;          /* Cover the entire screen */
-    background-position: center;     /* Center the image */
-    background-repeat: no-repeat;    /* Do not repeat */
-    background-attachment: fixed;    /* Stay fixed when scrolling */
+    background: linear-gradient(139deg, #f6fff8, #e8f5e9);
 }
 
 /* Titles */
