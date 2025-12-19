@@ -194,13 +194,6 @@ def intro_page():
 
     st.divider()
 
-# Example usage
-how_it_works_section()
-
-
-# ----------------------------------------------------
-
-
     # ✅ HOW IT WORKS SECTION (BEFORE UPLOAD)
     how_it_works_section()
 
