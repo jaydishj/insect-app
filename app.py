@@ -12,56 +12,19 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
+st.set_page_config(
+    page_title="INSECTIFICA",
+    page_icon="🐞",
+    layout="centered",
+    initial_sidebar_state="collapsed"
+)
+
 # --- Custom CSS for UI/UX ---
 st.markdown("""
 <style>
-/* App background container */
+/* App background */
 .stApp {
-    position: relative;
-    overflow: hidden;
-    background: #f6fff8;
-}
-
-/* Animated insect pattern */
-@keyframes float {
-    0% { transform: translateY(0) translateX(0) rotate(0deg); }
-    50% { transform: translateY(-100px) translateX(50px) rotate(180deg); }
-    100% { transform: translateY(0) translateX(0) rotate(360deg); }
-}
-
-.insect-bg {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    background-image: url('https://i.postimg.cc/3x3QXr7G/bee.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    animation: float 12s linear infinite;
-    opacity: 0.6;
-    top: 20%;
-    left: 10%;
-    z-index: 0;
-}
-
-.insect-bg:nth-child(2) {
-    animation-delay: 3s;
-    width: 60px; height: 60px;
-    top: 50%; left: 70%;
-    opacity: 0.7;
-}
-
-.insect-bg:nth-child(3) {
-    animation-delay: 5s;
-    width: 50px; height: 50px;
-    top: 30%; left: 40%;
-    opacity: 0.5;
-}
-
-.insect-bg:nth-child(4) {
-    animation-delay: 7s;
-    width: 70px; height: 70px;
-    top: 60%; left: 20%;
-    opacity: 0.6;
+    background: linear-gradient(135deg, #f6fff8, #e8f5e9);
 }
 
 /* Titles */
@@ -116,13 +79,8 @@ img {
     margin-top: 30px;
 }
 </style>
-
-<!-- Multiple floating insects -->
-<div class="insect-bg"></div>
-<div class="insect-bg"></div>
-<div class="insect-bg"></div>
-<div class="insect-bg"></div>
 """, unsafe_allow_html=True)
+
 
 
 
