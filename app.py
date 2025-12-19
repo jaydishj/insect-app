@@ -113,8 +113,19 @@ if "page" not in st.session_state:
 # INTRO PAGE (IMAGE UPLOAD)
 # ----------------------------------------------------
 # ----------------------------------------------------
+def ui_card(title, content):
+    st.markdown(
+        f"""
+        <div class="card">
+            <h3>{title}</h3>
+            <p>{content}</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
 def how_it_works_section():
-    st.subheader("🧠 How Insectifica Works")
+    st.subheader  ui_card (("🧠 How Insectifica Works"),
 
     st.markdown(
         """
@@ -143,7 +154,7 @@ def how_it_works_section():
 
     st.info(
         "💡 Tip: For best accuracy, ensure the insect is well-lit and clearly visible."
-    )
+    ))
 
     st.divider()
 
