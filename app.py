@@ -122,9 +122,9 @@ def intro_page():
 
     st.divider()
     def how_it_works_section():
-    st.subheader("🧠 How Insectifica Works")
+       st.subheader("🧠 How Insectifica Works")
 
-    st.markdown(
+       st.markdown(
         """
         ### 📸 Step 1: Snap or Upload a Photo
         Use your device camera to take a **clear, focused photo** of the insect or pest,  
@@ -149,11 +149,11 @@ def intro_page():
         """
     )
 
-    st.info(
+        st.info(
         "💡 Tip: For best accuracy, ensure the insect is well-lit and clearly visible."
     )
 
-    st.divider()
+        st.divider()
 
     col1, col2 = st.columns(2)
     with col1:
