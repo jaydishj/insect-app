@@ -2,153 +2,107 @@ import streamlit as st
 import tensorflow as tf
 import numpy as np
 from PIL import Image
-import pandas as pd# ----------------------------------------------------
+import pandas as pd
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 
 # ----------------------------------------------------
-#  LOAD MODEL & CSV
+# PAGE CONFIG (MUST BE FIRST)
+# ----------------------------------------------------
+st.set_page_config(
+    page_title="INSECTIFICA | AI Insect Identification",
+    page_icon="🐞",
+    layout="centered"
+)
+
+# ----------------------------------------------------
+# CUSTOM CSS
 # ----------------------------------------------------
 st.markdown("""
 <style>
 [data-testid="stToolbar"] {display: none !important;}
-</style>
-""", unsafe_allow_html=True)
 
-def load_custom_css():
-    st.markdown(
-        """
-        <style>
-        /* Main background */
-        .stApp {
-            background-color: #f5f7fa;
-        }
-
-        /* Title styling */
-        h1 {
-            color: #1b4332;
-            text-align: center;
-            font-weight: 700;
-        }
-
-        /* Header styling */
-        h2, h3 {
-            color: #2d6a4f;
-        }
-
-        /* Markdown text */
-        p, li {
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        /* Buttons */
-        div.stButton > button {
-            background-color: #40916c;
-            color: white;
-            border-radius: 10px;
-            padding: 0.6em 1.2em;
-            font-weight: 600;
-            border: none;
-        }
-
-        div.stButton > button:hover {
-            background-color: #2d6a4f;
-            color: #ffffff;
-        }
-
-        /* Divider */
-        hr {
-            border: 1px solid #d8f3dc;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
-load_custom_css()   
-st.markdown("""
-<style>
-[data-testid="stToolbar"] {display: none !important;}
-</style>
-""", unsafe_allow_html=True)
-st.markdown("""
-<style>
 .stApp {
-    background-color: transparent;
-    background-image:
-        linear-gradient(135deg, rgba(0,0,0,0.04) 25%, transparent 25%),
-        linear-gradient(225deg, rgba(0,0,0,0.04) 25%, transparent 25%),
-        linear-gradient(315deg, rgba(0,0,0,0.04) 25%, transparent 25%),
-        linear-gradient(45deg,  rgba(0,0,0,0.04) 25%, transparent 25%);
-    background-size: 40px 40px;
-    background-position: 20px 0, 20px 0, 0 0, 0 0;
+    background-color: #f5f7fa;
+}
+
+h1 {
+    color: #1b4332;
+    text-align: center;
+    font-weight: 700;
+}
+
+h2, h3 {
+    color: #2d6a4f;
+}
+
+p, li {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+div.stButton > button {
+    background-color: #40916c;
+    color: white;
+    border-radius: 10px;
+    padding: 0.6em 1.2em;
+    font-weight: 600;
+    border: none;
+}
+
+div.stButton > button:hover {
+    background-color: #2d6a4f;
+}
+
+hr {
+    border: 1px solid #d8f3dc;
 }
 </style>
 """, unsafe_allow_html=True)
 
-
+# ----------------------------------------------------
+# LOAD MODEL & DATA
+# ----------------------------------------------------
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model("mobilenetv2_insect_best.keras")  # your model file
-    return model
+    return tf.keras.models.load_model("mobilenetv2_insect_best.keras")
 
 @st.cache_data
-def load_csv():
-    expected_cols = [
-    "Common Name", "Scientific Name", "Host Crops", "Damage Symptoms",
-    "IPM Measures", "Chemical Control", "Kingdom", "Phylum", "Class",
-    "Order", "Family", "Genus", "Species"
-    ]
-    df = pd.read_excel("insect species.xlsx")
-    return df
+def load_data():
+    return pd.read_excel("insect species.xlsx")
 
 model = load_model()
-insect_df = load_csv()
-
+insect_df = load_data()
 
 # ----------------------------------------------------
-#  PREDICTION FUNCTION
+# PREDICTION FUNCTION
 # ----------------------------------------------------
 def predict_image(image):
-    img = image.resize((160, 160))   # MobileNetV3 input size
+    img = image.resize((160, 160))
     img = np.array(img)
-
-    img = preprocess_input(img)      # MobileNetV3 preprocessing
+    img = preprocess_input(img)
     img = np.expand_dims(img, axis=0)
-
-    prediction = model.predict(img)
-    class_index = np.argmax(prediction)
-    confidence = np.max(prediction)
-
-    return class_index, confidence
-
+    preds = model.predict(img)
+    return np.argmax(preds), np.max(preds)
 
 # ----------------------------------------------------
-#  PAGE 1: WELCOME PAGE
+# SESSION STATE
 # ----------------------------------------------------
+if "page" not in st.session_state:
+    st.session_state.page = "intro"
 
-# Page configuration (MUST be first Streamlit command)
-st.set_page_config(
-    page_title="Insectifica | Insect & Pest Identification",
-    page_icon="🐞",
-    layout="centered"
-)
-# Initialize session state
-
-
+# ----------------------------------------------------
+# INTRO PAGE (IMAGE UPLOAD)
+# ----------------------------------------------------
 def intro_page():
     st.title("🐞 INSECTIFICA 🔍")
-    st.subheader("Insect & Pest Identification App")
+    st.subheader("AI-Powered Insect & Pest Identification")
 
-    st.markdown(
-        """
-        **Insectifica** is an AI-powered mobile application that helps users  
-        instantly identify insects and pests using photographs.
+    st.markdown("""
+    **Insectifica** helps identify insects and pests instantly using artificial intelligence  
+    and image recognition.
 
-        Designed for **students, farmers, researchers, and nature enthusiasts**,  
-        the app makes insect identification simple, fast, and educational.
-        """
-    )
+    Designed for **students, farmers, researchers, and nature enthusiasts**.
+    """)
 
     st.divider()
 
@@ -159,183 +113,164 @@ def intro_page():
     )
 
     if uploaded_file:
-        st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
-        st.success("Image uploaded successfully!")
-
-    st.divider()
-
-    col1, col2 = st.columns([3, 1])
-    with col2:
-        if st.button("Next ➡️"):
-            st.session_state.page = "about"
-
-    st.divider()
-    if st.button("Next ➡️"):
-        st.session_state.page = "about"
-
-
-# ----------------------------------------------------
-#  PAGE 2: ABOUT DEPARTMENT
-# ----------------------------------------------------
-def about_page():
-    st.title("🏛️ About Insectifica")
-
-    st.header("✨ Key Features")
-    st.markdown(
-        """
-        • **Instant Identification:** Rapid insect and arthropod identification using advanced machine learning.  
-        • **Comprehensive Species Database:** Detailed profiles of butterflies, ants, beetles, moths, spiders,  
-          and agricultural pests.  
-        • **Pest vs. Beneficial Indicator:** Clear classification of species as harmful, neutral, or beneficial  
-          (pollinators or natural predators).  
-        • **Habitat & Behaviour Insights:** Educational content on life cycles, feeding habits, and ecological roles.  
-        • **Identification History:** Personal log of past identifications for academic, research, and reference use.  
-        • **Community & Sharing:** Share discoveries and collaborate through a nature-focused user community.
-        """
-    )
-
-    st.divider()
-
-    st.header("👥 Use Cases")
-    st.markdown(
-        """
-        • **Gardeners & Homeowners:** Identify pests and learn eco-friendly and sustainable management strategies.  
-        • **Students & Educators:** Support biology education through real-world field identification activities.  
-        • **Farmers & Agriculturists:** Enable early detection of agricultural pests and informed pest management decisions.  
-        • **Nature Enthusiasts:** Explore local biodiversity and maintain personal insect sighting records.
-        """
-    )
-
-    st.divider()
-
-    st.header("🌍 Why Insectifica Is Useful")
-    st.markdown(
-        """
-        Insectifica bridges the gap between expert entomological knowledge and everyday curiosity.  
-        By integrating artificial intelligence with scientifically verified data, the application  
-        transforms insect encounters into educational experiences, reduces misinformation, and  
-        supports biodiversity awareness and ecological research.
-        """
-    )
-
-    st.divider()
-
-    st.header("📸 Notes & Best Practices")
-    st.markdown(
-        """
-        • Capture clear, well-focused images under good lighting conditions.  
-        • Take photographs from multiple angles whenever possible.  
-        • Ensure key anatomical features such as wings, legs, antennae, and body patterns are visible  
-          for improved identification accuracy.
-        """
-    )
-
-    st.divider()
-
-    st.header("🏫 Developed By")
-    st.markdown(
-        """
-        **Department of Biotechnology**  
-        St. Joseph’s College (Autonomous)  
-        Tiruchirappalli – 620 002
-        """
-    )
-
-    st.header("👨‍🔬 Project Team")
-    st.markdown(
-        """
-        **App Concept & Design:**  
-        Dr. A. Edward  
-
-        **Development & Programming:**  
-        Dr. A. Edward  
-        Dr. V. Swabna  
-        Dr. A. Asha Monica  
-        Dr. Pavulraj Michael  
-
-        **Scientific Data Verification:**  
-        Dr. V. Swabna  
-        Dr. A. Asha Monica  
-        Dr. Pavulraj Michael  
-
-        **Guidance & Supervision:**  
-        Dr. Pavulraj Michael SJ  
-        Rector , St. Joseph’s College (Autonomous)   
-        Tiruchirappalli – 620 002
-        """
-    )
-
-    st.divider()
-
-    st.header("📬 Contact")
-    st.markdown(
-        """
-        **Department of Biotechnology**  
-        St. Joseph’s College (Autonomous)  
-        Tiruchirappalli – 620 002
-        """
-    )
-
-    if st.button("Proceed to Classification ➡️"):
-        st.session_state.page = "classification"
-
-# ----------------------------------------------------
-#  PAGE 3: CLASSIFICATION PAGE
-# ----------------------------------------------------
-def classification_page():
-    st.title("🔍 Insect Image Classification")
-
-    st.write("Upload an insect image to get species identification and management details.")
-
-    uploaded_file = st.file_uploader("Upload Image", type=["jpg", "jpeg", "png"])
-
-    if uploaded_file:
         img = Image.open(uploaded_file)
-        st.image(img, caption="Uploaded Insect Image", use_container_width=True)
+        st.image(img, caption="Uploaded Image", use_container_width=True)
+        st.success("Image uploaded successfully")
+        if st.button("🔍 Start Identification"):
+            st.session_state.uploaded_image = img
+            st.session_state.page = "classification"
 
-        class_index, confidence = predict_image(img)
+    st.divider()
 
-        row = insect_df.iloc[class_index]
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("ℹ️ About App"):
+            st.session_state.page = "about_app"
+    with col2:
+        if st.button("👨‍🔬 Developers"):
+            st.session_state.page = "developers"
 
-        st.success(f"{row['Common Name']} ({row['Scientific Name']})")
-       
-        st.write("## 🧬 Taxonomy")
-        st.write(f"**Kingdom:** {row['Kingdom']}")
-        st.write(f"**Phylum:** {row['Phylum']}")
-        st.write(f"**Class:** {row['Class']}")
-        st.write(f"**Order:** {row['Order']}")
-        st.write(f"**Family:** {row['Family']}")
-        st.write(f"**Genus:** {row['Genus']}")
-        st.write(f"**Species:** {row['Species']}")
+# ----------------------------------------------------
+# ABOUT APP PAGE
+# ----------------------------------------------------
+def about_app_page():
+    st.title("ℹ️ About INSECTIFICA")
 
-        st.write("## 🌿 Host Crops")
-        st.write(row["Host Crops"])
+    st.markdown("""
+    **Insectifica** is an AI-powered mobile application designed to help users instantly identify  
+    insects, pests, and other arthropods from photographs.
 
-        st.write("## 🐛 Damage Symptoms")
-        st.write(row["Damage Symptoms"])
+    Developed as an **educational and research-support initiative** by the  
+    **Department of Biotechnology, St. Joseph’s College (Autonomous), Tiruchirappalli**.
+    """)
 
-        st.write("## 🛡️ IPM Measures")
-        st.write(row["IPM Measures"])
+    st.divider()
 
-        st.write("## ⚠️ Chemical Control")
-        st.write(row["Chemical Control"])
+    st.header("🎯 Core Purpose")
+    st.markdown("""
+    The primary goal of Insectifica is to provide **fast and accurate identification**  
+    of insects and pests using smartphone images, along with educational insights.
+    """)
+
+    st.divider()
+
+    if st.button("➡️ Features & Use Cases"):
+        st.session_state.page = "features"
+
+    if st.button("⬅️ Back"):
+        st.session_state.page = "intro"
+
+# ----------------------------------------------------
+# FEATURES PAGE
+# ----------------------------------------------------
+def features_page():
+    st.title("✨ Features & Use Cases")
+
+    st.markdown("""
+    • Instant AI-based insect identification  
+    • Comprehensive species database  
+    • Pest vs Beneficial classification  
+    • Habitat & behaviour information  
+    • Educational and research support
+    """)
+
+    st.divider()
+
+    st.header("📸 Best Practices")
+    st.markdown("""
+    • Capture clear images  
+    • Use good lighting  
+    • Ensure wings, legs, and antennae are visible
+    """)
+
+    if st.button("👨‍🔬 Developers"):
+        st.session_state.page = "developers"
+
+    if st.button("⬅️ Back"):
+        st.session_state.page = "about_app"
+
+# ----------------------------------------------------
+# DEVELOPERS PAGE
+# ----------------------------------------------------
+def developers_page():
+    st.title("👨‍🔬 Development Team")
+
+    st.markdown("""
+    **Department of Biotechnology**  
+    St. Joseph’s College (Autonomous)  
+    Tiruchirappalli – 620 002
+    """)
+
+    st.divider()
+
+    st.markdown("""
+    **App Concept & Design**  
+    Dr. A. Edward  
+
+    **Development & Programming**  
+    Dr. A. Edward  
+    Dr. V. Swabna  
+    Dr. A. Asha Monica  
+    Dr. Pavulraj Michael  
+
+    **Guidance & Supervision**  
+    Dr. Pavulraj Michael SJ
+    """)
 
     if st.button("⬅️ Back to Home"):
-        st.session_state.page = "welcome"
-
+        st.session_state.page = "intro"
 
 # ----------------------------------------------------
-#  STREAMLIT NAVIGATION LOGIC
+# CLASSIFICATION PAGE
 # ----------------------------------------------------
-if "page" not in st.session_state:
-    st.session_state.page = "welcome"
+def classification_page():
+    st.title("🔍 Insect Classification Result")
 
-if st.session_state.page == "welcome":
-    welcome_page()
-elif st.session_state.page == "about":
-    about_page()
+    img = st.session_state.get("uploaded_image", None)
+    if img is None:
+        st.warning("No image uploaded.")
+        if st.button("⬅️ Back"):
+            st.session_state.page = "intro"
+        return
+
+    st.image(img, use_container_width=True)
+
+    class_index, confidence = predict_image(img)
+    row = insect_df.iloc[class_index]
+
+    st.success(f"{row['Common Name']} ({row['Scientific Name']})")
+
+    st.write("### 🧬 Taxonomy")
+    st.write(f"**Order:** {row['Order']} | **Family:** {row['Family']}")
+
+    st.write("### 🌿 Host Crops")
+    st.write(row["Host Crops"])
+
+    st.write("### 🐛 Damage Symptoms")
+    st.write(row["Damage Symptoms"])
+
+    st.write("### 🛡️ IPM Measures")
+    st.write(row["IPM Measures"])
+
+    st.write("### ⚠️ Chemical Control")
+    st.write(row["Chemical Control"])
+
+    if st.button("⬅️ Back to Home"):
+        st.session_state.page = "intro"
+
+# ----------------------------------------------------
+# NAVIGATION
+# ----------------------------------------------------
+if st.session_state.page == "intro":
+    intro_page()
+elif st.session_state.page == "about_app":
+    about_app_page()
+elif st.session_state.page == "features":
+    features_page()
+elif st.session_state.page == "developers":
+    developers_page()
 elif st.session_state.page == "classification":
     classification_page()
 
 st.write("---")
-st.write("Thank you for using the AI-Driven Insect Classification System.")
+st.write("© Department of Biotechnology | St. Joseph’s College (Autonomous)")
