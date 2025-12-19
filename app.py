@@ -431,17 +431,18 @@ def classification_page():
     st.write(f"**Family:** {row['Family']}")
     st.write(f"**Genus:** {row['Genus']}")
     st.write(f"**Species:** {row['Species']}")
+    
     st.write("## 🌿 Host Crops")
-        st.write(row["Host Crops"])
+    st.write(row["Host Crops"])
 
-        st.write("## 🐛 Damage Symptoms")
-        st.write(row["Damage Symptoms"])
+    st.write("## 🐛 Damage Symptoms")
+    st.write(row["Damage Symptoms"])
 
-        st.write("## 🛡️ IPM Measures")
-        st.write(row["IPM Measures"])
+    st.write("## 🛡️ IPM Measures")
+    st.write(row["IPM Measures"])
 
-        st.write("## ⚠️ Chemical Control")
-        st.write(row["Chemical Control"])
+    st.write("## ⚠️ Chemical Control")
+    st.write(row["Chemical Control"])
 
     # 🌿 OTHER DETAILS
 
