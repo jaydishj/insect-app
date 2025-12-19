@@ -5,59 +5,73 @@ from PIL import Image
 import pandas as pd
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 
-# ----------------------------------------------------
-# PAGE CONFIG (MUST BE FIRST)
-# ----------------------------------------------------
+st.set_page_config(
+    page_title="INSECTIFICA",
+    page_icon="🐞",
+    layout="centered",
+    initial_sidebar_state="collapsed"
+)
+
+# --- Custom CSS for UI/UX ---
 st.markdown("""
 <style>
-/* Keyframes for smooth random flight */
-@keyframes fly {
-  0% { transform: translate(0,0) rotate(0deg); }
-  25% { transform: translate(100px, 50px) rotate(45deg); }
-  50% { transform: translate(200px, -30px) rotate(180deg); }
-  75% { transform: translate(150px, 100px) rotate(270deg); }
-  100% { transform: translate(0,0) rotate(360deg); }
+/* App background */
+.stApp {
+    background: linear-gradient(135deg, #f6fff8, #e8f5e9);
 }
 
-/* Base insect style */
-.fly-insect {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  background-image: url('https://i.postimg.cc/3x3QXr7G/bee.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  animation: fly 12s linear infinite;
-  z-index: 0; /* behind cards */
-  opacity: 0.8;
+/* Titles */
+h1, h2, h3 {
+    text-align: center;
+    color: #1b5e20;
 }
 
-/* Different insects with varied delays and speeds */
-.fly-insect:nth-child(2) {
-  animation-delay: 2s;
-  animation-duration: 14s;
-  width: 50px; height: 50px;
-  opacity: 0.7;
+/* Buttons */
+.stButton > button {
+    width: 100%;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2e7d32, #66bb6a);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0.6em;
+    border: none;
 }
-.fly-insect:nth-child(3) {
-  animation-delay: 4s;
-  animation-duration: 10s;
-  width: 40px; height: 40px;
-  opacity: 0.9;
+
+.stButton > button:hover {
+    background: linear-gradient(135deg, #1b5e20, #4caf50);
 }
-.fly-insect:nth-child(4) {
-  animation-delay: 6s;
-  animation-duration: 16s;
-  width: 55px; height: 55px;
-  opacity: 0.85;
+
+/* Upload box */
+[data-testid="stFileUploader"] {
+    border: 2px dashed #2e7d32;
+    border-radius: 15px;
+    padding: 1em;
+    background-color: #f1f8e9;
+}
+
+/* Image styling */
+img {
+    border-radius: 16px;
+}
+
+/* Card-style sections */
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+}
+
+/* Footer text */
+.footer {
+    text-align: center;
+    font-size: 13px;
+    color: gray;
+    margin-top: 30px;
 }
 </style>
-
-<!-- Flying insects -->
-<div class="fly-insect"></div>
-<div class="fly-insect"></div>
-<div class="fly-insect"></div>
-<div class="fly-insect"></div>
 """, unsafe_allow_html=True)
 
 
