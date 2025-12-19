@@ -9,52 +9,70 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 # PAGE CONFIG (MUST BE FIRST)
 # ----------------------------------------------------
 st.set_page_config(
-    page_title="INSECTIFICA | AI Insect Identification",
+    page_title="INSECTIFICA",
     page_icon="🐞",
-    layout="centered"
+    layout="centered",
+    initial_sidebar_state="collapsed"
 )
 
-# ----------------------------------------------------
-# CUSTOM CSS
-# ----------------------------------------------------
+# --- Custom CSS for UI/UX ---
 st.markdown("""
 <style>
-[data-testid="stToolbar"] {display: none !important;}
-
+/* App background */
 .stApp {
-    background-color: #f5f7fa;
+    background: linear-gradient(135deg, #f6fff8, #e8f5e9);
 }
 
-h1 {
-    color: #1b4332;
+/* Titles */
+h1, h2, h3 {
     text-align: center;
-    font-weight: 700;
+    color: #1b5e20;
 }
 
-h2, h3 {
-    color: #2d6a4f;
-}
-
-p, li {
-    font-size: 16px;
-    line-height: 1.6;
-}
-
-div.stButton > button {
-    background-color: #40916c;
+/* Buttons */
+.stButton > button {
+    width: 100%;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2e7d32, #66bb6a);
     color: white;
-    border-radius: 10px;
-    padding: 0.6em 1.2em;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0.6em;
     border: none;
 }
 
-div.stButton > button:hover {
-    background-color: #2d6a4f;
+.stButton > button:hover {
+    background: linear-gradient(135deg, #1b5e20, #4caf50);
 }
 
-hr {
-    border: 1px solid #d8f3dc;
+/* Upload box */
+[data-testid="stFileUploader"] {
+    border: 2px dashed #2e7d32;
+    border-radius: 15px;
+    padding: 1em;
+    background-color: #f1f8e9;
+}
+
+/* Image styling */
+img {
+    border-radius: 16px;
+}
+
+/* Card-style sections */
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+}
+
+/* Footer text */
+.footer {
+    text-align: center;
+    font-size: 13px;
+    color: gray;
+    margin-top: 30px;
 }
 </style>
 """, unsafe_allow_html=True)
