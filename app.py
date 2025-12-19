@@ -22,9 +22,13 @@ st.set_page_config(
 # --- Custom CSS for UI/UX ---
 st.markdown("""
 <style>
-/* App background */
+/* App background with image */
 .stApp {
-    background: linear-gradient(139deg, #f6fff8, #e8f5e9);
+    background-image: url('https://i.postimg.cc/3x3QXr7G/bee.png');  /* Replace with your desired image URL */
+    background-size: cover;          /* Cover the entire screen */
+    background-position: center;     /* Center the image */
+    background-repeat: no-repeat;    /* Do not repeat */
+    background-attachment: fixed;    /* Stay fixed when scrolling */
 }
 
 /* Titles */
