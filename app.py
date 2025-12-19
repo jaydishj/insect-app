@@ -300,7 +300,7 @@ def developers_page():
     Dr. A. Edward  
     Dr. V. Swabna  
     Dr. A. Asha Monica  
-    Dr. Pavulraj Michael  
+    Dr. Pavulraj Michael SJ
 
     **Guidance & Supervision**  
     Dr. Pavulraj Michael SJ  
