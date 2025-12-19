@@ -133,58 +133,48 @@ st.set_page_config(
     page_icon="🐞",
     layout="centered"
 )
+# Initialize session state
+if "page" not in st.session_state:
+    st.session_state.page = "intro"
 
-def welcome_page():
+# Page routing
+if st.session_state.page == "intro":
+    intro_page()
+elif st.session_state.page == "about":
+    about_page()
+
+def intro_page():
     st.title("🐞 INSECTIFICA 🔍")
-    st.subheader("Insect and Pest Identification Mobile Application")
+    st.subheader("Insect & Pest Identification App")
 
     st.markdown(
         """
-        **Insectifica** is an AI-powered mobile application designed to help users instantly identify  
-        insects, pests, and other arthropods from photographs. The application leverages advanced  
-        image recognition techniques and a comprehensive entomological database to make insect  
-        identification accessible to professionals, scientists, gardeners, farmers, students, and  
-        nature enthusiasts.
+        **Insectifica** is an AI-powered mobile application that helps users  
+        instantly identify insects and pests using photographs.
 
-        Developed as an **educational and research-support initiative** by the  
-        **Department of Biotechnology, St. Joseph’s College (Autonomous), Tiruchirappalli**,  
-        Insectifica reflects the institution’s commitment to scientific excellence, innovation,  
-        and community-oriented learning.
+        Designed for **students, farmers, researchers, and nature enthusiasts**,  
+        the app makes insect identification simple, fast, and educational.
         """
     )
 
     st.divider()
 
-    st.header("🎯 Core Purpose")
-    st.markdown(
-        """
-        The primary goal of Insectifica is to provide **fast and accurate identification** of insects  
-        and pests using a simple photograph captured through a smartphone camera.  
-
-        Whether encountering an unfamiliar insect in a home environment, a garden, or an  
-        agricultural field, Insectifica delivers **reliable identification results** along with  
-        **educational insights**, enabling informed decision-making and learning.
-        """
+    st.header("📸 Upload Insect Image")
+    uploaded_file = st.file_uploader(
+        "Capture or upload an insect image",
+        type=["jpg", "jpeg", "png"]
     )
+
+    if uploaded_file:
+        st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
+        st.success("Image uploaded successfully!")
 
     st.divider()
 
-    st.header("⚙️ How It Works")
-    st.markdown(
-        """
-        **1. Capture or Upload an Image**  
-        Use the in-app camera to take a clear photograph of the insect or upload an existing image  
-        from the device gallery.
-
-        **2. AI-Based Image Analysis**  
-        The AI model analyzes the image by comparing it with a trained database of insect and pest  
-        species, focusing on visual traits such as body structure, coloration, wings, and antennae.
-
-        **3. Identification & Information Output**  
-        Within seconds, the application provides the most probable species identification along with  
-        scientific details including taxonomy, common name, habitat, behaviour, and ecological role.
-        """
-    )
+    col1, col2 = st.columns([3, 1])
+    with col2:
+        if st.button("Next ➡️"):
+            st.session_state.page = "about"
 
     st.divider()
     if st.button("Next ➡️"):
