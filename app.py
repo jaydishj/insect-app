@@ -153,7 +153,7 @@ def intro_page():
         "💡 Tip: For best accuracy, ensure the insect is well-lit and clearly visible."
     )
 
-        st.divider()
+    st.divider()
 
     col1, col2 = st.columns(2)
     with col1:
