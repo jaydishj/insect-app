@@ -63,14 +63,6 @@ st.markdown("""
     top: 60%; left: 20%;
     opacity: 0.6;
 }
-</style>
-
-<!-- Multiple floating insects -->
-<div class="insect-bg"></div>
-<div class="insect-bg"></div>
-<div class="insect-bg"></div>
-<div class="insect-bg"></div>
-
 
 /* Titles */
 h1, h2, h3 {
@@ -124,7 +116,14 @@ img {
     margin-top: 30px;
 }
 </style>
+
+<!-- Multiple floating insects -->
+<div class="insect-bg"></div>
+<div class="insect-bg"></div>
+<div class="insect-bg"></div>
+<div class="insect-bg"></div>
 """, unsafe_allow_html=True)
+
 
 
 # ----------------------------------------------------
