@@ -113,6 +113,8 @@ if "page" not in st.session_state:
 # INTRO PAGE (IMAGE UPLOAD)
 # ----------------------------------------------------
 # ----------------------------------------------------
+
+# Step 1: UI Card Function
 def ui_card(title, content):
     st.markdown(
         f"""
@@ -124,8 +126,9 @@ def ui_card(title, content):
         unsafe_allow_html=True
     )
 
+# Step 2: How It Works Section
 def how_it_works_section():
-   ui_card(
+    ui_card(
         "🧠 How Insectifica Works",
         """
         <b>📸 Step 1: Snap or Upload a Photo</b><br>
@@ -152,9 +155,34 @@ def how_it_works_section():
         </ul>
         """
     )
+
     st.info(
         "💡 Tip: For best accuracy, ensure the insect is well-lit and clearly visible."
     )
+
+# Optional: CSS for card styling
+st.markdown("""
+<style>
+.card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.card h3 {
+    color: #2d6a4f;
+    margin-bottom: 10px;
+}
+.card p, .card li {
+    font-size: 15px;
+    line-height: 1.6;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# Example usage
+how_it_works_section()
 
 
 # ----------------------------------------------------
