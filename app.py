@@ -386,7 +386,8 @@ def developers_page():
     **Department of Biotechnology**  
     St. Joseph’s College (Autonomous)  
     Tiruchirappalli – 620 002  
-    Contact mail id:edward_bt@mail.sjctni.edu  
+    Contact mail id:  
+    edward_bt@mail.sjctni.edu  
     cisgene.edward@gmail.com
     """)
 
