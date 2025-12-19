@@ -121,6 +121,39 @@ def intro_page():
             st.session_state.page = "classification"
 
     st.divider()
+    def how_it_works_section():
+    st.subheader("🧠 How Insectifica Works")
+
+    st.markdown(
+        """
+        ### 📸 Step 1: Snap or Upload a Photo
+        Use your device camera to take a **clear, focused photo** of the insect or pest,  
+        or upload an image from your gallery.
+
+        ---
+        ### 🤖 Step 2: AI-Powered Analysis
+        Insectifica’s deep learning model analyzes the image by comparing it with a  
+        **large entomological database**, focusing on:
+        - Body shape & size  
+        - Color patterns  
+        - Wing structure  
+        - Antennae & leg features  
+
+        ---
+        ### 🐞 Step 3: Identification & Insights
+        Within seconds, the app provides:
+        - **Common & Scientific Name**
+        - **Taxonomic Classification**
+        - **Behaviour & Habitat**
+        - **Ecological Role (Pest / Beneficial / Neutral)**
+        """
+    )
+
+    st.info(
+        "💡 Tip: For best accuracy, ensure the insect is well-lit and clearly visible."
+    )
+
+    st.divider()
 
     col1, col2 = st.columns(2)
     with col1:
