@@ -236,24 +236,31 @@ def classification_page():
     st.image(img, use_container_width=True)
 
     class_index, confidence = predict_image(img)
-    row = insect_df.iloc[class_index]
 
-    st.success(f"{row['Common Name']} ({row['Scientific Name']})")
+        row = insect_df.iloc[class_index]
 
-    st.write("### 🧬 Taxonomy")
-    st.write(f"**Order:** {row['Order']} | **Family:** {row['Family']}")
+        st.success(f"{row['Common Name']} ({row['Scientific Name']})")
+       
+        st.write("## 🧬 Taxonomy")
+        st.write(f"**Kingdom:** {row['Kingdom']}")
+        st.write(f"**Phylum:** {row['Phylum']}")
+        st.write(f"**Class:** {row['Class']}")
+        st.write(f"**Order:** {row['Order']}")
+        st.write(f"**Family:** {row['Family']}")
+        st.write(f"**Genus:** {row['Genus']}")
+        st.write(f"**Species:** {row['Species']}")
 
-    st.write("### 🌿 Host Crops")
-    st.write(row["Host Crops"])
+        st.write("## 🌿 Host Crops")
+        st.write(row["Host Crops"])
 
-    st.write("### 🐛 Damage Symptoms")
-    st.write(row["Damage Symptoms"])
+        st.write("## 🐛 Damage Symptoms")
+        st.write(row["Damage Symptoms"])
 
-    st.write("### 🛡️ IPM Measures")
-    st.write(row["IPM Measures"])
+        st.write("## 🛡️ IPM Measures")
+        st.write(row["IPM Measures"])
 
-    st.write("### ⚠️ Chemical Control")
-    st.write(row["Chemical Control"])
+        st.write("## ⚠️ Chemical Control")
+        st.write(row["Chemical Control"])
 
     if st.button("⬅️ Back to Home"):
         st.session_state.page = "intro"
