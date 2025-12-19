@@ -115,18 +115,7 @@ if "page" not in st.session_state:
 # ----------------------------------------------------
 
 # Step 1: UI Card Function
-def intro_page():
-    st.title("🐞 INSECTIFICA 🔍")
-    st.subheader("AI-Powered Insect & Pest Identification")
 
-    st.markdown("""
-    **Insectifica** helps identify insects and pests instantly using artificial intelligence  
-    and image recognition.
-
-    Designed for **students, farmers, researchers, and nature enthusiasts**.
-    """)
-
-    st.divider()
 def ui_card(title, content):
     st.markdown(
         f"""
@@ -192,6 +181,18 @@ st.markdown("""
 }
 </style>
 """, unsafe_allow_html=True)
+def intro_page():
+    st.title("🐞 INSECTIFICA 🔍")
+    st.subheader("AI-Powered Insect & Pest Identification")
+
+    st.markdown("""
+    **Insectifica** helps identify insects and pests instantly using artificial intelligence  
+    and image recognition.
+
+    Designed for **students, farmers, researchers, and nature enthusiasts**.
+    """)
+
+    st.divider()
 
 # Example usage
 how_it_works_section()
