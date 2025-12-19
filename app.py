@@ -431,39 +431,20 @@ def classification_page():
     st.write(f"**Family:** {row['Family']}")
     st.write(f"**Genus:** {row['Genus']}")
     st.write(f"**Species:** {row['Species']}")
+    st.write("## 🌿 Host Crops")
+        st.write(row["Host Crops"])
+
+        st.write("## 🐛 Damage Symptoms")
+        st.write(row["Damage Symptoms"])
+
+        st.write("## 🛡️ IPM Measures")
+        st.write(row["IPM Measures"])
+
+        st.write("## ⚠️ Chemical Control")
+        st.write(row["Chemical Control"])
 
     # 🌿 OTHER DETAILS
-# 🌿 Host Crops
-st.markdown(f"""
-<div class="info-card">
-    <div class="info-header">🌿 Host Crops</div>
-    <div class="info-content">{row['Host Crops']}</div>
-</div>
-""", unsafe_allow_html=True)
 
-# 🐛 Damage Symptoms
-st.markdown(f"""
-<div class="info-card">
-    <div class="info-header">🐛 Damage Symptoms</div>
-    <div class="info-content">{row['Damage Symptoms']}</div>
-</div>
-""", unsafe_allow_html=True)
-
-# 🛡️ IPM Measures
-st.markdown(f"""
-<div class="info-card">
-    <div class="info-header">🛡️ IPM Measures</div>
-    <div class="info-content">{row['IPM Measures']}</div>
-</div>
-""", unsafe_allow_html=True)
-
-# ⚠️ Chemical Control
-st.markdown(f"""
-<div class="info-card">
-    <div class="info-header">⚠️ Chemical Control</div>
-    <div class="info-content">{row['Chemical Control']}</div>
-</div>
-""", unsafe_allow_html=True)
 
 
 if st.button("⬅️ Back to Home"):
