@@ -74,6 +74,21 @@ img {
     color: gray;
     margin-top: 30px;
 }
+.info-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1b5e20;
+}
+
+.info-content {
+    margin-top: 10px;
+    padding-left: 36px;
+    font-size: 16px;
+    color: #333;
+}
 </style>
 """, unsafe_allow_html=True)
 
