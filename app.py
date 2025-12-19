@@ -227,40 +227,49 @@ def classification_page():
     st.title("🔍 Insect Classification Result")
 
     img = st.session_state.get("uploaded_image", None)
+
+    # 🔹 Case 1: No image uploaded
     if img is None:
         st.warning("No image uploaded.")
         if st.button("⬅️ Back"):
             st.session_state.page = "intro"
         return
-  
-        st.image(img, use_container_width=True)
 
+    # 🔹 Case 2: Image exists → proceed
+    st.image(img, use_container_width=True)
+
+    with st.spinner("Analyzing insect image..."):
         class_index, confidence = predict_image(img)
-
         row = insect_df.iloc[class_index]
 
-        st.success(f"{row['Common Name']} ({row['Scientific Name']})")
-       
-        st.write("## 🧬 Taxonomy")
-        st.write(f"**Kingdom:** {row['Kingdom']}")
-        st.write(f"**Phylum:** {row['Phylum']}")
-        st.write(f"**Class:** {row['Class']}")
-        st.write(f"**Order:** {row['Order']}")
-        st.write(f"**Family:** {row['Family']}")
-        st.write(f"**Genus:** {row['Genus']}")
-        st.write(f"**Species:** {row['Species']}")
+    st.success(
+        f"{row['Common Name']} ({row['Scientific Name']})\n\n"
+        f"Confidence: {confidence*100:.2f}%"
+    )
 
-        st.write("## 🌿 Host Crops")
-        st.write(row["Host Crops"])
+    # 🧬 FULL TAXONOMY
+    st.write("## 🧬 Taxonomy")
+    st.write(f"**Kingdom:** {row['Kingdom']}")
+    st.write(f"**Phylum:** {row['Phylum']}")
+    st.write(f"**Class:** {row['Class']}")
+    st.write(f"**Order:** {row['Order']}")
+    st.write(f"**Family:** {row['Family']}")
+    st.write(f"**Genus:** {row['Genus']}")
+    st.write(f"**Species:** {row['Species']}")
 
-        st.write("## 🐛 Damage Symptoms")
-        st.write(row["Damage Symptoms"])
+    # 🌿 OTHER DETAILS
+    st.write("## 🌿 Host Crops")
+    st.write(row["Host Crops"])
 
-        st.write("## 🛡️ IPM Measures")
-        st.write(row["IPM Measures"])
+    st.write("## 🐛 Damage Symptoms")
+    st.write(row["Damage Symptoms"])
 
-        st.write("## ⚠️ Chemical Control")
-        st.write(row["Chemical Control"])
+    st.write("## 🛡️ IPM Measures")
+    st.write(row["IPM Measures"])
+
+    st.write("## ⚠️ Chemical Control")
+    st.write(row["Chemical Control"])
+
 
     if st.button("⬅️ Back to Home"):
         st.session_state.page = "intro"
