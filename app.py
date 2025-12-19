@@ -126,14 +126,7 @@ def predict_image(image):
 # ----------------------------------------------------
 #  PAGE 1: WELCOME PAGE
 # ----------------------------------------------------
-if "page" not in st.session_state:
-    st.session_state.page = "intro"
 
-# Page routing
-if st.session_state.page == "intro":
-    intro_page()
-elif st.session_state.page == "about":
-    about_page()
 # Page configuration (MUST be first Streamlit command)
 st.set_page_config(
     page_title="Insectifica | Insect & Pest Identification",
