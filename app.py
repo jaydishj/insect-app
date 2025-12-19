@@ -404,11 +404,7 @@ def classification_page():
     img = st.session_state.get("uploaded_image", None)
 
     # 🔹 Case 1: No image uploaded
-    if img is None:
-        st.warning("No image uploaded.")
-        if st.button("⬅️ Back"):
-            st.session_state.page = "intro"
-        return
+ 
 
     # 🔹 Case 2: Image exists → proceed
     st.image(img, use_container_width=True)
