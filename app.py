@@ -18,30 +18,6 @@ st.set_page_config(
 # --- Custom CSS for UI/UX ---
 st.markdown("""
 <style>
-.info-card {
-    background: white;
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 18px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.info-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 22px;
-    font-weight: 700;
-    color: #1b5e20;
-}
-
-.info-content {
-    margin-top: 10px;
-    align-items: center;
-    padding-left: 36px;
-    font-size: 16px;
-    color: #333;
-}
 /* App background */
 .stApp {
     background: linear-gradient(135deg, #f6fff8, #e8f5e9);
@@ -98,9 +74,9 @@ img {
     color: gray;
     margin-top: 30px;
 }
-
 </style>
 """, unsafe_allow_html=True)
+
 
 # ----------------------------------------------------
 # LOAD MODEL & DATA
