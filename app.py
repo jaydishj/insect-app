@@ -70,7 +70,8 @@ st.markdown("""
 <div class="insect-bg"></div>
 <div class="insect-bg"></div>
 <div class="insect-bg"></div>
-}
+
+
 /* Titles */
 h1, h2, h3 {
     text-align: center;
