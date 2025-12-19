@@ -93,36 +93,11 @@ if "page" not in st.session_state:
 # ----------------------------------------------------
 # INTRO PAGE (IMAGE UPLOAD)
 # ----------------------------------------------------
-def intro_page():
-    st.title("🐞 INSECTIFICA 🔍")
-    st.subheader("AI-Powered Insect & Pest Identification")
+# ----------------------------------------------------
+def how_it_works_section():
+    st.subheader("🧠 How Insectifica Works")
 
-    st.markdown("""
-    **Insectifica** helps identify insects and pests instantly using artificial intelligence  
-    and image recognition.
-
-    Designed for **students, farmers, researchers, and nature enthusiasts**.
-    """)
-
-    st.divider()
-
-    st.header("📸 Upload Insect/Pest Image")
-    uploaded_file = st.file_uploader(
-        "Capture or upload an insect image",
-        type=["jpg", "jpeg", "png"]
-    )
-
-    if uploaded_file:
-        img = Image.open(uploaded_file)
-        st.image(img, caption="Uploaded Image", use_container_width=True)
-        st.success("Image uploaded successfully")
-        if st.button("🔍 Start Identification"):
-            st.session_state.uploaded_image = img
-            st.session_state.page = "classification"
-     def how_it_works_section():
-       st.subheader("🧠 How Insectifica Works")
-
-       st.markdown(
+    st.markdown(
         """
         ### 📸 Step 1: Snap or Upload a Photo
         Use your device camera to take a **clear, focused photo** of the insect or pest,  
@@ -151,8 +126,44 @@ def intro_page():
         "💡 Tip: For best accuracy, ensure the insect is well-lit and clearly visible."
     )
 
+    st.divider()
+
+
+# ----------------------------------------------------
+def intro_page():
+    st.title("🐞 INSECTIFICA 🔍")
+    st.subheader("AI-Powered Insect & Pest Identification")
+
+    st.markdown("""
+    **Insectifica** helps identify insects and pests instantly using artificial intelligence  
+    and image recognition.
+
+    Designed for **students, farmers, researchers, and nature enthusiasts**.
+    """)
 
     st.divider()
+
+    # ✅ HOW IT WORKS SECTION (BEFORE UPLOAD)
+    how_it_works_section()
+
+    # ✅ IMAGE UPLOAD SECTION
+    st.header("📸 Upload Insect / Pest Image")
+
+    uploaded_file = st.file_uploader(
+        "Capture or upload an insect image",
+        type=["jpg", "jpeg", "png"],
+        key="upload_image"
+    )
+
+    if uploaded_file:
+        img = Image.open(uploaded_file)
+        st.image(img, caption="Uploaded Image", use_container_width=True)
+        st.success("Image uploaded successfully")
+
+        if st.button("🔍 Start Identification", key="start_identification"):
+            st.session_state.uploaded_image = img
+            st.session_state.page = "classification"
+
 
     col1, col2 = st.columns(2)
     with col1:
