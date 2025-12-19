@@ -466,7 +466,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 
-    if st.button("⬅️ Back to Home"):
+if st.button("⬅️ Back to Home"):
         st.session_state.page = "intro"
 
 # ----------------------------------------------------
