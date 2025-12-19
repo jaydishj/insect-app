@@ -24,7 +24,7 @@ st.markdown("""
 <style>
 /* App background */
 .stApp {
-    background: linear-gradient(135deg, #f6fff8, #e8f5e9);
+    background: linear-gradient(139deg, #f6fff8, #e8f5e9);
 }
 
 /* Titles */
