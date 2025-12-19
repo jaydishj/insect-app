@@ -37,6 +37,7 @@ st.markdown("""
 
 .info-content {
     margin-top: 10px;
+    align-items: center;
     padding-left: 36px;
     font-size: 16px;
     color: #333;
