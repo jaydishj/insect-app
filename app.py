@@ -418,9 +418,7 @@ def classification_page():
 
     # 🌿 OTHER DETAILS
 
-
-
-if st.button("⬅️ Back to Home"):
+    if st.button("⬅️ Back to Home"):
         st.session_state.page = "intro"
 
 # ----------------------------------------------------
