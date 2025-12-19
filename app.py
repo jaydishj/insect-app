@@ -8,74 +8,29 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 # ----------------------------------------------------
 # PAGE CONFIG (MUST BE FIRST)
 # ----------------------------------------------------
-st.set_page_config(
-    page_title="INSECTIFICA",
-    page_icon="🐞",
-    layout="centered",
-    initial_sidebar_state="collapsed"
-)
-
-# --- Custom CSS for UI/UX ---
 st.markdown("""
 <style>
-/* App background */
-.stApp {
-    background: linear-gradient(135deg, #f6fff8, #e8f5e9);
+@keyframes fly {
+  0% { transform: translate(0,0) rotate(0deg); }
+  50% { transform: translate(200px, 100px) rotate(180deg); }
+  100% { transform: translate(0,0) rotate(360deg); }
 }
 
-/* Titles */
-h1, h2, h3 {
-    text-align: center;
-    color: #1b5e20;
-}
-
-/* Buttons */
-.stButton > button {
-    width: 100%;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #2e7d32, #66bb6a);
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 0.6em;
-    border: none;
-}
-
-.stButton > button:hover {
-    background: linear-gradient(135deg, #1b5e20, #4caf50);
-}
-
-/* Upload box */
-[data-testid="stFileUploader"] {
-    border: 2px dashed #2e7d32;
-    border-radius: 15px;
-    padding: 1em;
-    background-color: #f1f8e9;
-}
-
-/* Image styling */
-img {
-    border-radius: 16px;
-}
-
-/* Card-style sections */
-.card {
-    background: white;
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    margin-bottom: 20px;
-}
-
-/* Footer text */
-.footer {
-    text-align: center;
-    font-size: 13px;
-    color: gray;
-    margin-top: 30px;
+.fly-insect {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-image: url('https://i.postimg.cc/3x3QXr7G/bee.png'); /* insect PNG */
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: fly 10s linear infinite;
 }
 </style>
+<div class="fly-insect"></div>
+<div class="fly-insect" style="animation-delay:2s;"></div>
+<div class="fly-insect" style="animation-delay:4s;"></div>
 """, unsafe_allow_html=True)
+
 
 
 # ----------------------------------------------------
