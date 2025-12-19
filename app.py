@@ -119,9 +119,7 @@ def intro_page():
         if st.button("🔍 Start Identification"):
             st.session_state.uploaded_image = img
             st.session_state.page = "classification"
-
-    st.divider()
-    def how_it_works_section():
+     def how_it_works_section():
        st.subheader("🧠 How Insectifica Works")
 
        st.markdown(
@@ -152,6 +150,7 @@ def intro_page():
     st.info(
         "💡 Tip: For best accuracy, ensure the insect is well-lit and clearly visible."
     )
+
 
     st.divider()
 
