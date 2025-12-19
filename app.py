@@ -8,6 +8,12 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 # ----------------------------------------------------
 #  LOAD MODEL & CSV
 # ----------------------------------------------------
+st.markdown("""
+<style>
+[data-testid="stToolbar"] {display: none !important;}
+</style>
+""", unsafe_allow_html=True)
+
 def load_custom_css():
     st.markdown(
         """
