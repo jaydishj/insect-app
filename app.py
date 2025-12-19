@@ -10,27 +10,55 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 # ----------------------------------------------------
 st.markdown("""
 <style>
+/* Keyframes for smooth random flight */
 @keyframes fly {
   0% { transform: translate(0,0) rotate(0deg); }
-  50% { transform: translate(200px, 100px) rotate(180deg); }
+  25% { transform: translate(100px, 50px) rotate(45deg); }
+  50% { transform: translate(200px, -30px) rotate(180deg); }
+  75% { transform: translate(150px, 100px) rotate(270deg); }
   100% { transform: translate(0,0) rotate(360deg); }
 }
 
+/* Base insect style */
 .fly-insect {
   position: absolute;
-  width: 50px;
-  height: 50px;
-  background-image: url('https://i.postimg.cc/3x3QXr7G/bee.png'); /* insect PNG */
+  width: 60px;
+  height: 60px;
+  background-image: url('https://i.postimg.cc/3x3QXr7G/bee.png');
   background-size: contain;
   background-repeat: no-repeat;
-  animation: fly 10s linear infinite;
+  animation: fly 12s linear infinite;
+  z-index: 0; /* behind cards */
+  opacity: 0.8;
+}
+
+/* Different insects with varied delays and speeds */
+.fly-insect:nth-child(2) {
+  animation-delay: 2s;
+  animation-duration: 14s;
+  width: 50px; height: 50px;
+  opacity: 0.7;
+}
+.fly-insect:nth-child(3) {
+  animation-delay: 4s;
+  animation-duration: 10s;
+  width: 40px; height: 40px;
+  opacity: 0.9;
+}
+.fly-insect:nth-child(4) {
+  animation-delay: 6s;
+  animation-duration: 16s;
+  width: 55px; height: 55px;
+  opacity: 0.85;
 }
 </style>
-<div class="fly-insect"></div>
-<div class="fly-insect" style="animation-delay:2s;"></div>
-<div class="fly-insect" style="animation-delay:4s;"></div>
-""", unsafe_allow_html=True)
 
+<!-- Flying insects -->
+<div class="fly-insect"></div>
+<div class="fly-insect"></div>
+<div class="fly-insect"></div>
+<div class="fly-insect"></div>
+""", unsafe_allow_html=True)
 
 
 # ----------------------------------------------------
