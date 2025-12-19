@@ -125,38 +125,37 @@ def ui_card(title, content):
     )
 
 def how_it_works_section():
-    st.subheader  ui_card (("🧠 How Insectifica Works"),
-
-    st.markdown(
+   ui_card(
+        "🧠 How Insectifica Works",
         """
-        ### 📸 Step 1: Snap or Upload a Photo
-        Use your device camera to take a **clear, focused photo** of the insect or pest,  
-        or upload an image from your gallery.
+        <b>📸 Step 1: Snap or Upload a Photo</b><br>
+        Use your device camera to take a clear, focused photo of the insect or pest,
+        or upload an image from your gallery.<br><br>
 
-        ---
-        ### 🤖 Step 2: AI-Powered Analysis
-        Insectifica’s deep learning model analyzes the image by comparing it with a  
-        **large entomological database**, focusing on:
-        - Body shape & size  
-        - Color patterns  
-        - Wing structure  
-        - Antennae & leg features  
+        <b>🤖 Step 2: AI-Powered Analysis</b><br>
+        Insectifica’s deep learning model analyzes the image by comparing it with a
+        large entomological database, focusing on:
+        <ul>
+            <li>Body shape & size</li>
+            <li>Color patterns</li>
+            <li>Wing structure</li>
+            <li>Antennae & leg features</li>
+        </ul>
 
-        ---
-        ### 🐞 Step 3: Identification & Insights
+        <b>🐞 Step 3: Identification & Insights</b><br>
         Within seconds, the app provides:
-        - **Common & Scientific Name**
-        - **Taxonomic Classification**
-        - **Behaviour & Habitat**
-        - **Ecological Role (Pest / Beneficial / Neutral)**
+        <ul>
+            <li>Common & Scientific Name</li>
+            <li>Taxonomic Classification</li>
+            <li>Behaviour & Habitat</li>
+            <li>Ecological Role (Pest / Beneficial / Neutral)</li>
+        </ul>
         """
     )
 
     st.info(
         "💡 Tip: For best accuracy, ensure the insect is well-lit and clearly visible."
-    ))
-
-    st.divider()
+    )
 
 
 # ----------------------------------------------------
