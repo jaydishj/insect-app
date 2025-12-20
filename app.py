@@ -28,7 +28,7 @@ st.markdown("""
 <style>
 /* Increase only main app title */
 h1 {
-    font-size: 44px !important;
+    font-size: 45px !important;
     font-weight: 800;
     color: #1b5e20;
 }
