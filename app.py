@@ -26,6 +26,24 @@ st.set_page_config(
 # --------------------------------------------------
 st.markdown("""
 <style>
+/* Increase only main app title */
+h1 {
+    font-size: 44px !important;
+    font-weight: 800;
+    color: #1b5e20;
+}
+
+/* Mobile adjustment */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 32px !important;
+    }
+}
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+<style>
 
 /* ---------------- App Background ---------------- */
 .stApp {
