@@ -5,6 +5,10 @@ from PIL import Image
 import pandas as pd
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 
+
+# --------------------------------------------------
+# Page Configuration (ONLY ONCE)
+# --------------------------------------------------
 st.set_page_config(
     page_title="INSECTIFICA",
     page_icon="🐞",
@@ -12,75 +16,112 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-st.set_page_config(
-    page_title="INSECTIFICA",
-    page_icon="🐞",
-    layout="centered",
-    initial_sidebar_state="collapsed"
-)
-
-# --- Custom CSS for UI/UX ---
+# --------------------------------------------------
+# Custom CSS (Desktop + Mobile Responsive)
+# --------------------------------------------------
 st.markdown("""
 <style>
-/* App background */
+
+/* ---------------- App Background ---------------- */
 .stApp {
     background: linear-gradient(139deg, #f6fff8, #e8f5e9);
 }
 
-/* Titles */
+/* ---------------- Titles ---------------- */
 h1, h2, h3 {
     text-align: center;
     color: #1b5e20;
+    font-weight: 700;
 }
 
-/* Buttons */
+/* ---------------- Buttons ---------------- */
 .stButton > button {
     width: 100%;
-    border-radius: 12px;
+    border-radius: 14px;
     background: linear-gradient(135deg, #2e7d32, #66bb6a);
     color: white;
     font-size: 18px;
     font-weight: bold;
-    padding: 0.6em;
+    padding: 0.7em;
     border: none;
+    transition: all 0.3s ease;
 }
 
 .stButton > button:hover {
     background: linear-gradient(135deg, #1b5e20, #4caf50);
+    transform: scale(1.02);
 }
 
-/* Upload box */
+/* ---------------- Upload Box ---------------- */
 [data-testid="stFileUploader"] {
     border: 2px dashed #2e7d32;
-    border-radius: 15px;
+    border-radius: 16px;
     padding: 1em;
     background-color: #f1f8e9;
 }
 
-/* Image styling */
+/* ---------------- Images ---------------- */
 img {
     border-radius: 16px;
+    max-width: 100%;
 }
 
-/* Card-style sections */
+/* ---------------- Card Sections ---------------- */
 .card {
     background: white;
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
     margin-bottom: 20px;
 }
 
-/* Footer text */
+/* ---------------- Footer ---------------- */
 .footer {
     text-align: center;
     font-size: 13px;
     color: gray;
     margin-top: 30px;
 }
+
+/* =================================================
+   📱 Mobile Responsive Styling
+   ================================================= */
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 26px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    .stButton > button {
+        font-size: 16px;
+        padding: 0.6em;
+        border-radius: 12px;
+    }
+
+    .card {
+        padding: 14px;
+        border-radius: 14px;
+    }
+
+    [data-testid="stFileUploader"] {
+        padding: 0.8em;
+    }
+
+    .footer {
+        font-size: 12px;
+    }
+}
+
 </style>
 """, unsafe_allow_html=True)
-
 
 
 
