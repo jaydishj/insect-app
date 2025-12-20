@@ -36,7 +36,7 @@ h1 {
 /* Mobile adjustment */
 @media (max-width: 768px) {
     h1 {
-        font-size: 38px !important;
+        font-size: 36px !important;
     }
 }
 </style>
