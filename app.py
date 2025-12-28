@@ -3,13 +3,7 @@ import tensorflow as tf
 import numpy as np
 from PIL import Image
 import pandas as pd
-from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
-
-
-# --------------------------------------------------
-# Page Configuration (ONLY ONCE)
-# --------------------------------------------------
-import streamlit as st
+import json
 
 # --------------------------------------------------
 # Page Configuration
