@@ -148,14 +148,45 @@ img {
 # ----------------------------------------------------
 @st.cache_resource
 def load_model():
-    return tf.keras.models.load_model("mobilenetv2_insect_best.keras")
+    return tf.keras.models.load_model(
+        "mobilenetv2_insect_best.keras"
+    )
 
+# ----------------------------------------------------
+#  LOAD JSON → DATAFRAME (FIXED)
+# ----------------------------------------------------
 @st.cache_data
-def load_data():
-    return pd.read_excel("insect species.xlsx")
+def load_json():
+    with open(
+        "c:/Users/Admin/Downloads/full_insect_prediction_knowledge_base.json",
+        "r",
+        encoding="utf-8"
+    ) as f:
+        data = json.load(f)
+
+    rows = []
+    for _, item in data.items():
+        tax = item.get("taxonomy", {})
+        rows.append({
+            "Common Name": item.get("common_name", ""),
+            "Scientific Name": item.get("scientific_name", ""),
+            "Host Crops": ", ".join(item.get("host_crops", [])),
+            "Damage Symptoms": ", ".join(item.get("damage_symptoms", [])),
+            "IPM Measures": ", ".join(item.get("ipm_measures", [])),
+            "Chemical Control": ", ".join(item.get("chemical_control", [])),
+            "Kingdom": tax.get("kingdom", ""),
+            "Phylum": tax.get("phylum", ""),
+            "Class": tax.get("class", ""),
+            "Order": tax.get("order", ""),
+            "Family": tax.get("family", ""),
+            "Genus": tax.get("genus", ""),
+            "Species": tax.get("species", "")
+        })
+
+    return pd.DataFrame(rows)
 
 model = load_model()
-insect_df = load_data()
+insect_df = load_json()
 
 # ----------------------------------------------------
 # PREDICTION FUNCTION
