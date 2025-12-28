@@ -917,6 +917,37 @@
       "species": "virgata"
     }
   },
+  "Formosina_flavipes": {
+    "common_name": "Cardamom shoot fly",
+    "scientific_name": "Formosina flavipes",
+    "host_crops": [
+      "Cardamom (primary host)",
+      "Ginger (as rhizome maggot)"
+    ],
+    "damage_symptoms": [
+      "Maggots bore into the central growing shoot of young suckers",
+      "Feeding on the growing point causes 'dead heart' symptom (central shoot wilts and dies)",
+      "Infested pseudostem shows entry holes and rotting",
+      "Severe infestation in nurseries and open plantations leads to stunted growth and reduced tiller production"
+    ],
+    "ipm_measures": [
+      "Cultural control: Provide adequate shade in plantations to reduce infestation, use healthy planting material, remove and destroy infested shoots",
+      "Mechanical control: Collect and destroy adult flies and infested plant parts",
+      "Biological control: Conserve natural enemies such as parasitoids and predators (specific agents limited, but general predators may help)"
+    ],
+    "chemical_control": [
+      "Use recommended insecticides as per CIBRC guidelines"
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Arthropoda",
+      "class": "Insecta",
+      "order": "Diptera",
+      "family": "Chloropidae",
+      "genus": "Formosina",
+      "species": "flavipes"
+    }
+  },
   "Gangara_thyrsis": {
     "common_name": "Refer standard entomology name",
     "scientific_name": "Gangara thyrsis",
