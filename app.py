@@ -158,7 +158,7 @@ def load_model():
 @st.cache_data
 def load_json():
     with open(
-        "c:/Users/Admin/Downloads/full_insect_prediction_knowledge_base.json",
+        "pest.json",
         "r",
         encoding="utf-8"
     ) as f:
