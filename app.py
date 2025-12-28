@@ -29,7 +29,7 @@ st.markdown("""
 @st.cache_resource
 def load_model():
     return tf.keras.models.load_model(
-        "E:/Isect pest/mobilenetv2_insect.keras"
+        "mobilenetv2_insect_best.keras"
     )
 
 # ----------------------------------------------------
