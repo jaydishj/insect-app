@@ -617,8 +617,8 @@ def classification_page():
     else:
         st.info("Please upload an image to get a prediction.")
 
-         st.markdown("---")
-         st.caption(
+        st.markdown("---")
+        st.caption(
     "Ensure the uploaded image is clear and matches the trained insect classes. "
     "Model preprocessing must align with training settings."
      )
