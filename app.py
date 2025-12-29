@@ -351,9 +351,9 @@ def developers_page():
 def classification_page():
      st.title("🔍 Insect Classification")
     
-    uploaded_file = st.file_uploader("Upload an insect image...", type=["jpg", "jpeg", "png"])
-    
-    if uploaded_file is not None:
+     uploaded_file = st.file_uploader("Upload an insect image...", type=["jpg", "jpeg", "png"])
+     
+     if uploaded_file is not None:
         image = Image.open(uploaded_file).convert("RGB")
         st.image(image, caption="Uploaded Image", use_container_width=True)
 
