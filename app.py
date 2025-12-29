@@ -184,8 +184,40 @@ def intro_page():
             st.session_state.page = "developers"
 
 def about_app_page():
-    st.title("ℹ️ About INSECTIFICA")
-    st.markdown("""[Your about text here — same as original]""")
+     st.title("ℹ️ About INSECTIFICA")
+
+    st.markdown(
+        """
+        **Insectifica** is an AI-powered mobile application designed to help users instantly identify
+        insects, pests, and other arthropods from photographs. It leverages advanced image recognition
+        techniques and a comprehensive entomological database to make insect identification accessible
+        to professionals, scientists, gardeners, farmers, and nature enthusiasts alike.
+
+        Insectifica is an **educational and research-support application** developed by the  
+        **Department of Biotechnology, St. Joseph’s College (Autonomous), Tiruchirappalli**.
+
+        Developed with a commitment to educational and research excellence, Insectifica reflects
+        St. Joseph’s College and the Department of Biotechnology’s ongoing mission to promote
+        scientific awareness, support research, and create innovative tools that empower learners
+        and professionals in the field of Biotechnology.
+        """
+    )
+
+    st.divider()
+
+    st.header("🎯 Core Purpose")
+    st.markdown(
+        """
+        Insectifica’s primary goal is to provide **fast and accurate identification**
+        of insects and pests using a simple photograph captured through a smartphone camera.
+
+        Whether encountering a tiny beetle in a home garden, a mysterious insect indoors,
+        or a potentially harmful pest in agricultural fields, Insectifica delivers
+        **reliable identification results** along with **educational insights**—all with
+        minimal effort.
+        """
+    )
+
     st.divider()
     if st.button("➡️ Features & Use Cases"):
         st.session_state.page = "features"
@@ -194,8 +226,93 @@ def about_app_page():
 
 def features_page():
     st.title("✨ Features & Use Cases")
-    st.markdown("""[Your features text here — same as original]""")
+
+    st.header("🔑 Key Features of Insectifica")
+    st.markdown(
+        """
+        • **Instant Identification:**  
+        Identify insects and arthropods instantly from photographs using advanced
+        machine learning—ideal for both casual users and experts.
+
+        • **Comprehensive Species Database:**  
+        Access detailed profiles of hundreds of insect and pest species including
+        butterflies, ants, beetles, moths, spiders, and major agricultural pests.
+
+        • **Pest vs. Beneficial Indicator:**  
+        Clearly distinguish whether a species is harmful (pest), neutral, or beneficial
+        (such as pollinators and natural predators).
+
+        • **Habitat & Behaviour Insights:**  
+        Each identification includes habitat preferences, life cycle details, feeding
+        habits, and ecological roles.
+
+        • **Identification History:**  
+        Save and review past identifications—useful for students, educators, researchers,
+        and biodiversity documentation.
+
+        • **Community & Sharing:**  
+        Share discoveries with peers or within a community to encourage collaborative
+        learning and nature awareness.
+        """
+    )
+
     st.divider()
+
+    st.header("👥 Use Cases")
+    st.markdown(
+        """
+        • **Gardeners & Homeowners:**  
+        Identify plant pests and learn eco-friendly and sustainable management strategies.
+
+        • **Students & Educators:**  
+        Use real-world insect identifications for biology education, fieldwork, and projects.
+
+        • **Farmers & Agriculturists:**  
+        Detect agricultural pests early and make informed Integrated Pest Management (IPM)
+        decisions.
+
+        • **Nature Enthusiasts:**  
+        Explore local biodiversity and maintain a personal record of insect sightings.
+        """
+    )
+
+    st.divider()
+
+    st.header("🌍 Why Insectifica Is Useful")
+    st.markdown(
+        """
+        Insectifica bridges the gap between expert entomological knowledge and everyday
+        curiosity. By combining artificial intelligence with scientifically curated
+        databases, the application transforms insect encounters into meaningful educational
+        experiences.
+
+        It helps reduce fear and misinformation about insects while supporting biodiversity
+        awareness, research documentation, and ecological understanding.
+        """
+    )
+
+    st.divider()
+
+    st.header("📸 Notes & Best Practices")
+    st.markdown(
+        """
+        • Capture clear, well-focused images under good lighting conditions.  
+        • Take photographs from multiple angles whenever possible.  
+        • Ensure key anatomical features such as wings, legs, antennae, and body patterns
+          are clearly visible to improve identification accuracy.
+        """
+    )
+
+    st.divider()
+
+
+
+    st.header("📸 Best Practices")
+    st.markdown("""
+    • Capture clear images  
+    • Use good lighting  
+    • Ensure wings, legs, and antennae are visible
+    """)
     col1, col2 = st.columns(2)
     with col1:
         if st.button("👨‍🔬 Developers"):
@@ -206,7 +323,34 @@ def features_page():
 
 def developers_page():
     st.title("👨‍🔬 Development Team")
-    st.markdown("""[Your developers text here — same as original]""")
+
+    st.markdown("""
+    **Department of Biotechnology**  
+    St. Joseph’s College (Autonomous)  
+    Tiruchirappalli – 620 002  
+    Contact mail id:  
+    edward_bt@mail.sjctni.edu  
+    cisgene.edward@gmail.com
+    """)
+
+    st.divider()
+
+    st.markdown("""
+    **App Concept & Design**  
+    Dr. A. Edward  
+
+    **Development & Programming**  
+    Dr. A. Edward  
+    Dr. V. Swabna  
+    Dr. A. Asha Monica  
+    Dr. Pavulraj Michael SJ
+
+    **Guidance & Supervision**  
+    Dr. Pavulraj Michael SJ  
+    Rector, St. Joseph’s College (Autonomous)  
+    Tiruchirappalli – 620 002
+    """)
+
     if st.button("⬅️ Back to Home"):
         st.session_state.page = "intro"
 
