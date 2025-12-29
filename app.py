@@ -404,7 +404,7 @@ def classification_page():
         if st.button("⬅️ Back to Home"):
             st.session_state.page = "intro"   
       else:
-         st.info("Please upload an image to begin identification.")
+          st.info("Please upload an image to begin identification.")
 
 # --------------------------------------------------
 # Page Routing
