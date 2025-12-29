@@ -401,8 +401,8 @@ def classification_page():
         else:
             st.warning("Detailed information for this species is not available in the database.")
 
-     if st.button("⬅️ Back to Home"):
-          st.session_state.page = "intro"   
+      if st.button("⬅️ Back to Home"):
+         st.session_state.page = "intro"   
 else:
 st.info("Please upload an image to begin identification.")
 
