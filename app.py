@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image
 import pandas as pd
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
-
+import json
 
 # --------------------------------------------------
 # Page Configuration (ONLY ONCE)
