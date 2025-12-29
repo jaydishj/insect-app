@@ -272,7 +272,7 @@ model = load_model()
 # PREDICTION FUNCTION
 # ----------------------------------------------------
 def predict_image(image):
-    img = image.resize((190, 190))
+    img = image.resize((224, 224))
     img = np.array(img)
     img = preprocess_input(img)
     img = np.expand_dims(img, axis=0)
