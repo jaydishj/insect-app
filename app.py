@@ -126,7 +126,7 @@ class_names = [
 # Load the model
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model('mobilenetv2_insect_savedmodel/mobilenetv2_insect.keras')
+    model = tf.keras.models.load_model('mobilenetv2_insect.keras')
     return model
 
 model = load_model()
