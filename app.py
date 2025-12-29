@@ -594,7 +594,7 @@ def classification_page():
     )
 
     # ---------------- IMAGE PREPROCESS ----------------
-    def preprocess_image(img, target_size=(190, 190)):
+    def preprocess_image(img, target_size=(224, 224)):
         img = img.resize(target_size).convert("RGB")
         img_array = np.array(img) / 255.0
         img_array = np.expand_dims(img_array, axis=0)
