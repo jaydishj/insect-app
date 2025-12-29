@@ -202,10 +202,10 @@ def about_app_page():
         """
     )
 
-    st.divider()
+     st.divider()
 
-    st.header("🎯 Core Purpose")
-    st.markdown(
+     st.header("🎯 Core Purpose")
+     st.markdown(
         """
         Insectifica’s primary goal is to provide **fast and accurate identification**
         of insects and pests using a simple photograph captured through a smartphone camera.
@@ -217,17 +217,17 @@ def about_app_page():
         """
     )
 
-    st.divider()
-    if st.button("➡️ Features & Use Cases"):
+     st.divider()
+     if st.button("➡️ Features & Use Cases"):
         st.session_state.page = "features"
-    if st.button("⬅️ Back"):
+     if st.button("⬅️ Back"):
         st.session_state.page = "intro"
 
 def features_page():
-    st.title("✨ Features & Use Cases")
-
-    st.header("🔑 Key Features of Insectifica")
-    st.markdown(
+     st.title("✨ Features & Use Cases")
+ 
+     st.header("🔑 Key Features of Insectifica")
+     st.markdown(
         """
         • **Instant Identification:**  
         Identify insects and arthropods instantly from photographs using advanced
@@ -255,10 +255,10 @@ def features_page():
         """
     )
 
-    st.divider()
+     st.divider()
 
-    st.header("👥 Use Cases")
-    st.markdown(
+     st.header("👥 Use Cases")
+     st.markdown(
         """
         • **Gardeners & Homeowners:**  
         Identify plant pests and learn eco-friendly and sustainable management strategies.
@@ -275,10 +275,10 @@ def features_page():
         """
     )
 
-    st.divider()
+     st.divider()
 
-    st.header("🌍 Why Insectifica Is Useful")
-    st.markdown(
+     st.header("🌍 Why Insectifica Is Useful")
+     st.markdown(
         """
         Insectifica bridges the gap between expert entomological knowledge and everyday
         curiosity. By combining artificial intelligence with scientifically curated
@@ -290,10 +290,10 @@ def features_page():
         """
     )
 
-    st.divider()
+     st.divider()
 
-    st.header("📸 Notes & Best Practices")
-    st.markdown(
+     st.header("📸 Notes & Best Practices")
+     st.markdown(
         """
         • Capture clear, well-focused images under good lighting conditions.  
         • Take photographs from multiple angles whenever possible.  
@@ -302,12 +302,12 @@ def features_page():
         """
     )
 
-    st.divider()
+     st.divider()
 
 
 
-    st.header("📸 Best Practices")
-    st.markdown("""
+     st.header("📸 Best Practices")
+     st.markdown("""
     • Capture clear images  
     • Use good lighting  
     • Ensure wings, legs, and antennae are visible
@@ -321,9 +321,9 @@ def features_page():
             st.session_state.page = "about_app"
 
 def developers_page():
-    st.title("👨‍🔬 Development Team")
+     st.title("👨‍🔬 Development Team")
 
-    st.markdown("""
+     st.markdown("""
     **Department of Biotechnology**  
     St. Joseph’s College (Autonomous)  
     Tiruchirappalli – 620 002  
@@ -332,9 +332,9 @@ def developers_page():
     cisgene.edward@gmail.com
     """)
 
-    st.divider()
+     st.divider()
 
-    st.markdown("""
+     st.markdown("""
     **App Concept & Design**  
     Dr. A. Edward  
 
@@ -354,7 +354,7 @@ def developers_page():
         st.session_state.page = "intro"
 
 def classification_page():
-    st.title("🔍 Insect Classification")
+     st.title("🔍 Insect Classification")
     
     uploaded_file = st.file_uploader("Upload an insect image...", type=["jpg", "jpeg", "png"])
     
