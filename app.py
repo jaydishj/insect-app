@@ -310,8 +310,10 @@ def features_page():
       • Use good lighting  
       • Ensure wings, legs, and antennae are visible
       """)
-     col1, col2 = st.columns(2)
-     with col1:
+
+      st.divider()
+      col1, col2 = st.columns(2)
+      with col1:
          if st.button("👨‍🔬 Developers"):
             st.session_state.page = "developers"
      with col2:
