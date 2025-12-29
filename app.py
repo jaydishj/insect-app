@@ -306,10 +306,10 @@ def features_page():
 
      st.header("📸 Best Practices")
      st.markdown("""
-    • Capture clear images  
-    • Use good lighting  
-    • Ensure wings, legs, and antennae are visible
-    """)
+      • Capture clear images  
+      • Use good lighting  
+      • Ensure wings, legs, and antennae are visible
+      """)
      col1, col2 = st.columns(2)
     
      with col1:
