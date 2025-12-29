@@ -147,7 +147,7 @@ img {
 # LOAD MODEL & DATA
 # ----------------------------------------------------
 # Load class details from JSON
-with open("e:/Isect pest/insect_data_dict.json", "r") as f:
+with open("pest.json", "r") as f:
     insect_data = json.load(f)
 
 # List of class names for model prediction
