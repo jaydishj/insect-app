@@ -349,62 +349,78 @@ def developers_page():
          st.session_state.page = "intro"
 
 def classification_page():
-     st.title("🔍 Insect Classification")
+    st.title("🔍 Insect Classification")
     
-     uploaded_file = st.file_uploader("Upload an insect image...", type=["jpg", "jpeg", "png"])
-     
-     if uploaded_file is not None:
+    uploaded_file = st.file_uploader("Upload an insect image...", type=["jpg", "jpeg", "png"])
+    
+    if uploaded_file is not None:
+        # Load and display image
         image = Image.open(uploaded_file).convert("RGB")
         st.image(image, caption="Uploaded Image", use_container_width=True)
 
-        # Correct preprocessing for MobileNetV2
+        # Preprocess image for MobileNetV2
         img = image.resize((190, 190))
         img_array = np.array(img)
-        img_array = preprocess_input(img_array)  # Critical: use MobileNetV2 preprocessing
+        img_array = preprocess_input(img_array)
         img_array = np.expand_dims(img_array, axis=0)
 
+        # Predict
         with st.spinner("Analyzing image..."):
             predictions = model.predict(img_array)
             predicted_idx = np.argmax(predictions[0])
             confidence = predictions[0][predicted_idx]
 
+        # Safety check
         if predicted_idx >= len(class_names):
             st.error("⚠️ Prediction index out of range. Please try another image.")
-            return
-
-        predicted_class = class_names[predicted_idx]
-        st.success(f"**Predicted Species:** {predicted_class}")
-        st.write(f"**Confidence:** {confidence:.2%}")
-
-        if predicted_class in insect_data:
-            details = insect_data[predicted_class]
-            st.markdown("## 🧬 Taxonomy")
-            st.write(f"**Kingdom:** {details.get('Kingdom', 'N/A')}")
-            st.write(f"**Phylum:** {details.get('Phylum', 'N/A')}")
-            st.write(f"**Class:** {details.get('Class', 'N/A')}")
-            st.write(f"**Order:** {details.get('Order', 'N/A')}")
-            st.write(f"**Family:** {details.get('Family', 'N/A')}")
-            st.write(f"**Genus:** {details.get('Genus', 'N/A')}")
-            st.write(f"**Species:** {details.get('Species', 'N/A')}")
-
-            st.markdown("## 🌿 Host Crops")
-            st.write(details.get("Host Crops", "Not available"))
-
-            st.markdown("## 🐛 Damage Symptoms")
-            st.write(details.get("Damage Symptoms", "Not available"))
-
-            st.markdown("## 🛡️ IPM Measures")
-            st.write(details.get("IPM Measures", "Not available"))
-
-            st.markdown("## ⚠️ Chemical Control")
-            st.write(details.get("Chemical Control", "Not available"))
         else:
-            st.warning("Detailed information for this species is not available in the database.")
+            predicted_class = class_names[predicted_idx]
+            st.success(f"**Predicted Species:** {predicted_class}")
+            st.write(f"**Confidence:** {confidence:.2%}")
 
-      if st.button("⬅️ Back to Home"):
-         st.session_state.page = "intro"   
-else:
-st.info("Please upload an image to begin identification.")
+            # Display insect details if available
+            if predicted_class in insect_data:
+                details = insect_data[predicted_class]
+                st.markdown("## 🧬 Taxonomy")
+                st.write(f"**Kingdom:** {details.get('Kingdom', 'N/A')}")
+                st.write(f"**Phylum:** {details.get('Phylum', 'N/A')}")
+                st.write(f"**Class:** {details.get('Class', 'N/A')}")
+                st.write(f"**Order:** {details.get('Order', 'N/A')}")
+                st.write(f"**Family:** {details.get('Family', 'N/A')}")
+                st.write(f"**Genus:** {details.get('Genus', 'N/A')}")
+                st.write(f"**Species:** {details.get('Species', 'N/A')}")
+
+                st.markdown("## 🌿 Host Crops")
+                st.write(details.get("Host Crops", "Not available"))
+
+                st.markdown("## 🐛 Damage Symptoms")
+                st.write(details.get("Damage Symptoms", "Not available"))
+
+                st.markdown("## 🛡️ IPM Measures")
+                st.write(details.get("IPM Measures", "Not available"))
+
+                st.markdown("## ⚠️ Chemical Control")
+                st.write(details.get("Chemical Control", "Not available"))
+            else:
+                st.warning("Detailed information for this species is not available in the database.")
+
+        # Separator and Back button (always shown when image is uploaded)
+        st.markdown("---")
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            if st.button("⬅️ Back to Home", use_container_width=True):
+                st.session_state.page = "intro"
+
+    else:
+        # This runs only when no image is uploaded
+        st.info("👆 Please upload a clear image of the insect to begin identification.")
+
+    # Optional: Always show back button at the very bottom (even when no image)
+    st.markdown("---")
+    col_a, col_b, col_c = st.columns([1, 2, 1])
+    with col_b:
+        if st.button("⬅️ Back to Home", use_container_width=True, key="bottom_back"):
+            st.session_state.page = "intro"
 
 # --------------------------------------------------
 # Page Routing
