@@ -139,11 +139,10 @@ if uploaded_file is not None:
     st.image(image, caption="Uploaded Image", use_container_width=True)
 
     # Preprocess image
-    def preprocess_image(img, target_size=(224, 224)):
-        img = img.resize(target_size).convert("RGB")
-        img_array = np.array(img) / 255.0
-        img_array = np.expand_dims(img_array, axis=0)
-        return img_array
+    def preprocess_image(img):
+    img = img.resize((224, 224)).convert("RGB")
+    img_array = np.array(img, dtype=np.float32) / 255.0
+    return np.expand_dims(img_array, axis=0)
 
     input_data = preprocess_image(image)
 
