@@ -345,7 +345,7 @@ def developers_page():
     Tiruchirappalli – 620 002
     """)
 
-    if st.button("⬅️ Back to Home"):
+      if st.button("⬅️ Back to Home"):
         st.session_state.page = "intro"
 
 def classification_page():
