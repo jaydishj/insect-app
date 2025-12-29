@@ -280,17 +280,6 @@ def predict_image(image):
     preds = model.predict(img)
     return np.argmax(preds), np.max(preds)
 
-# ----------------------------------------------------
-# SESSION STATE
-# ----------------------------------------------------
-
-
-# ----------------------------------------------------
-# INTRO PAGE (IMAGE UPLOAD)
-# ----------------------------------------------------
-# ----------------------------------------------------
-
-# Step 1: UI Card Function
 
 def ui_card(title, content):
     st.markdown(
