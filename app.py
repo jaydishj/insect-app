@@ -334,6 +334,7 @@ st.markdown("""
 }
 </style>
 """, unsafe_allow_html=True)
+
 def intro_page():
     st.title("🐞 INSECTIFICA 🔍")
     st.subheader("AI-Powered Insect & Pest Identification")
@@ -621,7 +622,6 @@ def classification_page():
     "Ensure the uploaded image is clear and matches the trained insect classes. "
     "Model preprocessing must align with training settings."
      )
-
 
 
     if st.session_state.page == "intro":
