@@ -411,16 +411,7 @@ def classification_page():
             if st.button("⬅️ Back to Home", use_container_width=True):
                 st.session_state.page = "intro"
 
-    else:
-        # This runs only when no image is uploaded
-        st.info("👆 Please upload a clear image of the insect to begin identification.")
 
-    # Optional: Always show back button at the very bottom (even when no image)
-    st.markdown("---")
-    col_a, col_b, col_c = st.columns([1, 2, 1])
-    with col_b:
-        if st.button("⬅️ Back to Home", use_container_width=True, key="bottom_back"):
-            st.session_state.page = "intro"
 
 # --------------------------------------------------
 # Page Routing
