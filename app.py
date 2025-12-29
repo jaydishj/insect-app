@@ -310,9 +310,9 @@ def features_page():
       • Use good lighting  
       • Ensure wings, legs, and antennae are visible
       """)
-      if st.button("👨‍🔬 Developers"):
+     if st.button("👨‍🔬 Developers"):
             st.session_state.page = "developers"
-      if st.button("⬅️ Back"):
+     if st.button("⬅️ Back"):
             st.session_state.page = "about_app"
 
 def developers_page():
