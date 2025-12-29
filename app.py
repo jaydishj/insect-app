@@ -148,7 +148,7 @@ img {
 # ----------------------------------------------------
 # Load class details from JSON
 with open("pest.json", "r") as f:
-    insect_data = json.load(f)
+    insect_data = pest.json.load(f)
 
 # List of class names for model prediction
 class_names = [
