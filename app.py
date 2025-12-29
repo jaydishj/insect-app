@@ -186,7 +186,7 @@ def intro_page():
 def about_app_page():
      st.title("ℹ️ About INSECTIFICA")
 
-    st.markdown("""
+     st.markdown("""
         **Insectifica** is an AI-powered mobile application designed to help users instantly identify
         insects, pests, and other arthropods from photographs. It leverages advanced image recognition
         techniques and a comprehensive entomological database to make insect identification accessible
