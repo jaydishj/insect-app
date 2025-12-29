@@ -6,12 +6,6 @@ import pandas as pd
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 import json
 
-
-# --------------------------------------------------
-# Page Configuration (ONLY ONCE)
-# --------------------------------------------------
-import streamlit as st
-
 # --------------------------------------------------
 # Page Configuration
 # --------------------------------------------------
@@ -142,12 +136,6 @@ img {
 """, unsafe_allow_html=True)
 
 
-
-
-# ----------------------------------------------------
-# LOAD MODEL & DATA
-# ----------------------------------------------------
-# Load class details from JSON
 with open("pest.json", "r") as f:
     insect_data = json.load(f)
 
@@ -415,16 +403,12 @@ def about_app_page():
 
     st.divider()
 
-
     if st.button("➡️ Features & Use Cases"):
         st.session_state.page = "features"
 
     if st.button("⬅️ Back"):
         st.session_state.page = "intro"
 
-# ----------------------------------------------------
-# FEATURES PAGE
-# ----------------------------------------------------
 def features_page():
     st.title("✨ Features & Use Cases")
 
@@ -505,7 +489,6 @@ def features_page():
     )
 
     st.divider()
-
 
 
     st.header("📸 Best Practices")
@@ -633,33 +616,27 @@ def classification_page():
     else:
         st.info("Please upload an image to get a prediction.")
 
-st.markdown("---")
-st.caption(
+         st.markdown("---")
+         st.caption(
     "Ensure the uploaded image is clear and matches the trained insect classes. "
     "Model preprocessing must align with training settings."
-)
-
-# 🌿 OTHER DETAILS
-if st.button("⬅️ Back to Home"):
-    st.session_state.page = "intro"
+     )
 
 
-# ----------------------------------------------------
-# NAVIGATION
-# ----------------------------------------------------
-if st.session_state.page == "intro":
-    intro_page()
-elif st.session_state.page == "about_app":
-    about_app_page()
-elif st.session_state.page == "features":
-    features_page()
-elif st.session_state.page == "developers":
-    developers_page()
-elif st.session_state.page == "classification":
-    classification_page()
 
-st.write("---")
-st.write("© Department of Biotechnology | St. Joseph’s College (Autonomous)")
+    if st.session_state.page == "intro":
+      intro_page()
+    elif st.session_state.page == "about_app":
+      about_app_page()
+    elif st.session_state.page == "features":
+      features_page()
+    elif st.session_state.page == "developers":
+      developers_page()
+    elif st.session_state.page == "classification":
+      classification_page()
+ 
+    st.write("---")
+    st.write("© Department of Biotechnology | St. Joseph’s College (Autonomous)")
 
 
 
