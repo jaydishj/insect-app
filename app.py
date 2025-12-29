@@ -283,8 +283,7 @@ def predict_image(image):
 # ----------------------------------------------------
 # SESSION STATE
 # ----------------------------------------------------
-if "page" not in st.session_state:
-    st.session_state.page = "intro"
+
 
 # ----------------------------------------------------
 # INTRO PAGE (IMAGE UPLOAD)
