@@ -147,8 +147,8 @@ img {
 # LOAD MODEL & DATA
 # ----------------------------------------------------
 # Load class details from JSON
-with open("pest.json", "r") as f:
-    insect_data = pest.json.load(f)
+with open("pest.json", "r", encoding="utf-8") as f:
+    insect_data = json.load(f)
 
 # List of class names for model prediction
 class_names = [
