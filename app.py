@@ -323,7 +323,7 @@ def developers_page():
     St. Joseph’s College (Autonomous)  
     Tiruchirappalli – 620 002  
     Contact mail id:  
-    edward_bt@mail.sjctni.edu  
+    edward_bt2@mail.sjctni.edu  
     cisgene.edward@gmail.com
     """)
 
