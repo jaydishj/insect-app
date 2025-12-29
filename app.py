@@ -304,8 +304,6 @@ def features_page():
 
      st.divider()
 
-
-
      st.header("📸 Best Practices")
      st.markdown("""
     • Capture clear images  
@@ -313,11 +311,11 @@ def features_page():
     • Ensure wings, legs, and antennae are visible
     """)
      col1, col2 = st.columns(2)
-     with col1:
-        if st.button("👨‍🔬 Developers"):
+       with col1:
+         if st.button("👨‍🔬 Developers"):
             st.session_state.page = "developers"
-     with col2:
-        if st.button("⬅️ Back"):
+       with col2:
+         if st.button("⬅️ Back"):
             st.session_state.page = "about_app"
 
 def developers_page():
