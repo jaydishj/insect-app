@@ -232,7 +232,7 @@ def intro_page():
     st.divider()
 
     col1, col2, col3 = st.columns(3)
-    with col1:
+    with col2:
         if st.button("🔍 Start Identification", use_container_width=True):
             st.session_state.page = "classification"
     st.divider()
