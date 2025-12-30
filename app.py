@@ -20,55 +20,117 @@ st.set_page_config(
 # --------------------------------------------------
 st.markdown("""
 <style>
-    .stApp {
-        background: linear-gradient(139deg, #f6fff8, #e8f5e9);
-        color: #1b5e20;
+
+/* --------------------------------------------------
+   GLOBAL APP THEME
+-------------------------------------------------- */
+.stApp {
+    background: linear-gradient(139deg, #f6fff8, #e8f5e9);
+    color: #1b5e20;
+    font-family: "Segoe UI", "Roboto", sans-serif;
+}
+
+/* --------------------------------------------------
+   HEADINGS
+-------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    color: #1b5e20 !important;
+    font-weight: 700;
+}
+
+/* --------------------------------------------------
+   BUTTON STYLING
+-------------------------------------------------- */
+.stButton > button {
+    width: 100%;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #2e7d32, #66bb6a);
+    color: white !important;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 0.75em;
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hover effect */
+.stButton > button:hover {
+    background: linear-gradient(135deg, #388e3c, #81c784);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+/* Active (click) effect */
+.stButton > button:active {
+    background: linear-gradient(135deg, #1b5e20, #43a047) !important;
+    transform: scale(0.97);
+}
+
+/* Disabled / loading look */
+button[disabled] {
+    background: linear-gradient(135deg, #1b5e20, #66bb6a) !important;
+    opacity: 0.75;
+    cursor: wait;
+}
+
+/* --------------------------------------------------
+   FILE UPLOADER
+-------------------------------------------------- */
+[data-testid="stFileUploader"] {
+    border: 2px dashed #2e7d32;
+    border-radius: 16px;
+    padding: 1em;
+    background-color: #f1f8e9;
+}
+
+/* --------------------------------------------------
+   IMAGES
+-------------------------------------------------- */
+img {
+    border-radius: 16px;
+    max-width: 100%;
+}
+
+/* --------------------------------------------------
+   CARD UI
+-------------------------------------------------- */
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    margin-bottom: 22px;
+    color: #1b5e20;
+}
+
+/* --------------------------------------------------
+   FOOTER
+-------------------------------------------------- */
+.footer {
+    text-align: center;
+    font-size: 13px;
+    color: #2e7d32 !important;
+    margin-top: 30px;
+}
+
+/* --------------------------------------------------
+   MOBILE RESPONSIVENESS
+-------------------------------------------------- */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 34px !important;
     }
-    h1, h2, h3, h4, h5, h6 {
-        text-align: center;
-        color: #1b5e20 !important;
-        font-weight: 700;
-    }
+
     .stButton > button {
-        width: 100%;
-        border-radius: 14px;
-        background: linear-gradient(135deg, #2e7d32, #66bb6a);
-        color: white !important;
-        font-size: 18px;
-        font-weight: bold;
-        padding: 0.7em;
-        border: none;
+        font-size: 16px;
+        padding: 0.65em;
     }
-    [data-testid="stFileUploader"] {
-        border: 2px dashed #2e7d32;
-        border-radius: 16px;
-        padding: 1em;
-        background-color: #f1f8e9;
-    }
-    img {
-        border-radius: 16px;
-        max-width: 100%;
-    }
-    .card {
-        background: white;
-        border-radius: 18px;
-        padding: 18px;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-        margin-bottom: 20px;
-        color: #1b5e20;
-    }
-    .footer {
-        text-align: center;
-        font-size: 13px;
-        color: #2e7d32 !important;
-        margin-top: 30px;
-    }
-    @media (max-width: 768px) {
-        h1 { font-size: 36px !important; }
-        .stButton > button { font-size: 16px; padding: 0.6em; }
-    }
+}
+
 </style>
 """, unsafe_allow_html=True)
+
 
 # --------------------------------------------------
 # Load Data & Model
