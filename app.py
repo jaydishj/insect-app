@@ -11,11 +11,11 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 # Hide hamburger menu, footer, header, and toolbar completely
 # Hide Streamlit's top-right menu (hamburger ☰), Manage app, Deploy button, toolbar, footer, etc.
 st.markdown("""
-    <style>
-    .stApp {background: #f8fff8;}
-    .block-container {padding-top: 1rem !important;}
-    </style>
+<style>
+[data-testid="stToolbar"] {display: none !important;}
+</style>
 """, unsafe_allow_html=True)
+
 hide_streamlit_elements = """
     <style>
     /* Hide the main hamburger menu */
