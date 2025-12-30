@@ -423,8 +423,8 @@ def developers_page():
 
      if st.button("⬅️ Back to Home"):
          with st.spinner("Wait Loading..."):
-         st.session_state.page = "intro"
-         st.rerun()
+           st.session_state.page = "intro"
+           st.rerun()
 
 
 def classification_page():
@@ -545,9 +545,9 @@ def classification_page():
         with col_back2:
             if st.button("⬅️ Back to Home", use_container_width=True):
                  with st.spinner("Wait Loading..."):
-                st.session_state.page = "intro"
-                st.rerun()
-    
+                    st.session_state.page = "intro"
+                    st.rerun()
+      
     else:
         # No image uploaded yet
         st.info("👆 Please upload or take a photo of the insect to start identification.")
@@ -558,8 +558,8 @@ def classification_page():
         with col_b:
             if st.button("⬅️ Back to Home", use_container_width=True, key="back_no_image"):
                  with st.spinner("Wait Loading..."):
-                st.session_state.page = "intro"
-                st.rerun()
+                     st.session_state.page = "intro"
+                     st.rerun()
 # --------------------------------------------------
 # Page Routing
 # --------------------------------------------------
