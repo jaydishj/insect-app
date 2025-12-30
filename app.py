@@ -412,7 +412,7 @@ def developers_page():
 
 def classification_page():
     st.title("🔍 Insect Identification")
-
+    
     # ---------------- Professional Header Card ----------------
     st.markdown("""
     <div class="card" style="text-align: center; padding: 20px; margin-bottom: 30px;">
@@ -422,7 +422,8 @@ def classification_page():
         </p>
     </div>
     """, unsafe_allow_html=True)
-
+    
+    # ---------------- Centered File Uploader ----------------
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         uploaded_file = st.file_uploader(
@@ -431,69 +432,8 @@ def classification_page():
             label_visibility="collapsed",
             help="Supported: JPG, PNG | Max size: 10MB"
         )
-        if uploaded_file is not None:
-        image = Image.open(uploaded_file).convert("RGB")
-        
-        # Display uploaded image beautifully
-        st.markdown("<h3 style='text-align: center; color: #2e7d32;'>Uploaded Image</h3>", unsafe_allow_html=True)
-        st.image(image, use_container_width=True, caption="Ready for analysis")
-
-        # Preprocess and predict
-        img = image.resize((190, 190))
-        img_array = np.array(img)
-        img_array = preprocess_input(img_array)
-        img_array = np.expand_dims(img_array, axis=0)
-
-        with st.spinner("🤖 AI is analyzing the insect... Please wait a moment"):
-            predictions = model.predict(img_array)
-            predicted_idx = np.argmax(predictions[0])
-            confidence = predictions[0][predicted_idx]
-
-        st.markdown("---")
-
-        if predicted_idx >= len(class_names):
-            st.error("⚠️ Unable to classify. Please try a clearer image of a single insect.")
-        else:
-            predicted_class = class_names[predicted_idx]
-
-            # Confidence bar with animation feel
-            st.success(f"**Identified Species:** {predicted_class}")
-            st.progress(confidence)
-            st.write(f"**Confidence Level:** {confidence:.1%}")
-
-            # Detailed Info
-            if predicted_class in insect_data:
-                details = insect_data[predicted_class]
-
-                st.markdown("## 🧬 Taxonomic Classification")
-                col_k, col_p, col_c = st.columns(3)
-                with col_k: st.write(f"**Kingdom:** {details.get('Kingdom', 'N/A')}")
-                with col_p: st.write(f"**Phylum:** {details.get('Phylum', 'N/A')}")
-                with col_c: st.write(f"**Class:** {details.get('Class', 'N/A')}")
-
-                col_o, col_f = st.columns(2)
-                with col_o: st.write(f"**Order:** {details.get('Order', 'N/A')}")
-                with col_f: st.write(f"**Family:** {details.get('Family', 'N/A')}")
-
-                st.write(f"**Genus:** {details.get('Genus', 'N/A')}")
-                st.write(f"**Species:** {details.get('Species', 'N/A')}")
-
-                st.markdown("## 🌿 Host Crops")
-                st.info(details.get("Host Crops", "Not available"))
-
-                st.markdown("## 🐛 Damage Symptoms")
-                st.warning(details.get("Damage Symptoms", "Not available"))
-
-                st.markdown("## 🛡️ Integrated Pest Management (IPM)")
-                st.success(details.get("IPM Measures", "Not available"))
-
-                st.markdown("## ⚠️ Chemical Control (If Needed)")
-                st.error(details.get("Chemical Control", "Not available"))
-            else:
-                st.warning("🔍 Detailed information for this species is not yet available in our database.")
-
-
-    # ---------------- Photo Tips with Animation Style ----------------
+    
+    # ---------------- Photo Tips Section (Always Visible) ----------------
     st.markdown("""
     <div style="background: #f1f8e9; border-radius: 16px; padding: 20px; margin-bottom: 25px; border-left: 5px solid #4caf50;">
         <h4 style="color: #2e7d32; text-align: center;">💡 Best Tips for Accurate Results</h4>
@@ -521,25 +461,80 @@ def classification_page():
         </div>
     </div>
     """, unsafe_allow_html=True)
-
-    # ---------------- Professional File Uploader ----------------
     
-    # ---------------- If Image Uploaded → Process ----------------
-    
-
-        # Back Button
+    # ---------------- Image Processing (Only if uploaded) ----------------
+    if uploaded_file is not None:
+        image = Image.open(uploaded_file).convert("RGB")
+       
+        # Display uploaded image beautifully
+        st.markdown("<h3 style='text-align: center; color: #2e7d32;'>Uploaded Image</h3>", unsafe_allow_html=True)
+        st.image(image, use_container_width=True, caption="Ready for analysis")
+        
+        # Preprocess and predict
+        img = image.resize((190, 190))
+        img_array = np.array(img)
+        img_array = preprocess_input(img_array)
+        img_array = np.expand_dims(img_array, axis=0)
+        
+        with st.spinner("🤖 AI is analyzing the insect... Please wait a moment"):
+            predictions = model.predict(img_array)
+            predicted_idx = np.argmax(predictions[0])
+            confidence = predictions[0][predicted_idx]
+        
+        st.markdown("---")
+        
+        if predicted_idx >= len(class_names):
+            st.error("⚠️ Unable to classify. Please try a clearer image of a single insect.")
+        else:
+            predicted_class = class_names[predicted_idx]
+            # Confidence bar with animation feel
+            st.success(f"**Identified Species:** {predicted_class}")
+            st.progress(confidence)
+            st.write(f"**Confidence Level:** {confidence:.1%}")
+            
+            # Detailed Info
+            if predicted_class in insect_data:
+                details = insect_data[predicted_class]
+                st.markdown("## 🧬 Taxonomic Classification")
+                col_k, col_p, col_c = st.columns(3)
+                with col_k: st.write(f"**Kingdom:** {details.get('Kingdom', 'N/A')}")
+                with col_p: st.write(f"**Phylum:** {details.get('Phylum', 'N/A')}")
+                with col_c: st.write(f"**Class:** {details.get('Class', 'N/A')}")
+                
+                col_o, col_f = st.columns(2)
+                with col_o: st.write(f"**Order:** {details.get('Order', 'N/A')}")
+                with col_f: st.write(f"**Family:** {details.get('Family', 'N/A')}")
+                
+                st.write(f"**Genus:** {details.get('Genus', 'N/A')}")
+                st.write(f"**Species:** {details.get('Species', 'N/A')}")
+                
+                st.markdown("## 🌿 Host Crops")
+                st.info(details.get("Host Crops", "Not available"))
+                
+                st.markdown("## 🐛 Damage Symptoms")
+                st.warning(details.get("Damage Symptoms", "Not available"))
+                
+                st.markdown("## 🛡️ Integrated Pest Management (IPM)")
+                st.success(details.get("IPM Measures", "Not available"))
+                
+                st.markdown("## ⚠️ Chemical Control (If Needed)")
+                st.error(details.get("Chemical Control", "Not available"))
+            else:
+                st.warning("🔍 Detailed information for this species is not yet available in our database.")
+        
+        # Back Button after results
         st.markdown("---")
         col_back1, col_back2, col_back3 = st.columns([1, 1, 1])
         with col_back2:
             if st.button("⬅️ Back to Home", use_container_width=True):
                 st.session_state.page = "intro"
                 st.rerun()
-
+    
     else:
         # No image uploaded yet
         st.info("👆 Please upload or take a photo of the insect to start identification.")
-
-        # Always show back button at bottom
+        
+        # Always show back button at bottom when no image
         st.markdown("---")
         col_a, col_b, col_c = st.columns([1, 2, 1])
         with col_b:
