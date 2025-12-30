@@ -498,12 +498,12 @@ def classification_page():
                 st.markdown("## 🧬 Taxonomic Classification")
                 col_k, col_p, col_c = st.columns(3)
                 with col_k: st.write(f"**Kingdom:** {details.get('Kingdom', 'N/A')}")
-                with col_p: st.write(f"**Phylum:** {details.get('Phylum', 'N/A')}")
-                with col_c: st.write(f"**Class:** {details.get('Class', 'N/A')}")
+                with col_k: st.write(f"**Phylum:** {details.get('Phylum', 'N/A')}")
+                with col_k: st.write(f"**Class:** {details.get('Class', 'N/A')}")
                 
                 col_o, col_f = st.columns(2)
                 with col_o: st.write(f"**Order:** {details.get('Order', 'N/A')}")
-                with col_f: st.write(f"**Family:** {details.get('Family', 'N/A')}")
+                with col_o: st.write(f"**Family:** {details.get('Family', 'N/A')}")
                 
                 st.write(f"**Genus:** {details.get('Genus', 'N/A')}")
                 st.write(f"**Species:** {details.get('Species', 'N/A')}")
