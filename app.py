@@ -8,6 +8,26 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 # --------------------------------------------------
 # Page Configuration
 # --------------------------------------------------
+# Hide hamburger menu, footer, header, and toolbar completely
+hide_streamlit_style = """
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    .stDeployButton {display: none !important;}   /* Hide Deploy button */
+    .stApp > header {display: none !important;}
+    .stToolbar {display: none !important;}
+    </style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+# Optional: make the page look even cleaner
+st.markdown("""
+    <style>
+    .stApp {background: #f8fff8;}
+    .block-container {padding-top: 1rem !important;}
+    </style>
+""", unsafe_allow_html=True)
 st.set_page_config(
     page_title="INSECTIFICA",
     page_icon="🐞",
