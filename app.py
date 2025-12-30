@@ -366,17 +366,16 @@ def features_page():
      st.markdown(
         """
         • **Gardeners & Homeowners:**  
-        Identify plant pests and learn eco-friendly and sustainable management strategies.
+        Identify pests affecting plants and learn natural pest management tips.
 
         • **Students & Educators:**  
-        Use real-world insect identifications for biology education, fieldwork, and projects.
+        Use real identifications in biology classes and field projects for hands-on learning.
 
         • **Farmers & Agriculturists:**  
-        Detect agricultural pests early and make informed Integrated Pest Management (IPM)
-        decisions.
+        Spot agricultural pests early and decide integrated pest management steps.
 
         • **Nature Enthusiasts:**  
-        Explore local biodiversity and maintain a personal record of insect sightings.
+         Explore biodiversity around you and build personal insect sighting collections.
         """
     )
 
@@ -385,13 +384,7 @@ def features_page():
      st.header("🌍 Why Insectifica Is Useful")
      st.markdown(
         """
-        Insectifica bridges the gap between expert entomological knowledge and everyday
-        curiosity. By combining artificial intelligence with scientifically curated
-        databases, the application transforms insect encounters into meaningful educational
-        experiences.
-
-        It helps reduce fear and misinformation about insects while supporting biodiversity
-        awareness, research documentation, and ecological understanding.
+        Insectifica bridges the gap between expert entomological identification and everyday curiosity. By combining AI technology with scientific databases, it transforms insect and pest encounters into educational moments, helps reduce fear or misinformation about bugs and enables data collection for broader ecological insights..
         """
     )
 
@@ -411,9 +404,7 @@ def features_page():
 
      st.header("📸 Best Practices")
      st.markdown("""
-      • Capture clear images  
-      • Use good lighting  
-      • Ensure wings, legs, and antennae are visible
+      • Accuracy improves with clear, focused photos taken from multiple angles — close enough to see key insect traits.
       """)
      if st.button("👨‍🔬 Developers"):
           with st.spinner("Wait Loading..."):
@@ -447,6 +438,9 @@ def developers_page():
     Dr. V. Swabna  
     Dr. A. Asha Monica  
     Dr. Pavulraj Michael SJ
+
+    **Scientific Data Verification**
+     Dr. V. Swabna, Dr. A. Asha Monica and Dr. Pavulraj Michael SJ
 
     **Guidance & Supervision**  
     Dr. Pavulraj Michael SJ  
