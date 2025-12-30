@@ -41,6 +41,15 @@ st.markdown("""
     .block-container {padding-top: 1rem !important;}
     </style>
 """, unsafe_allow_html=True)
+
+st.markdown("""
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+</style>
+""", unsafe_allow_html=True)
+
 st.set_page_config(
     page_title="INSECTIFICA",
     page_icon="🐞",
