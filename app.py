@@ -465,6 +465,23 @@ def classification_page():
     # ---------------- Image Processing (Only if uploaded) ----------------
     if uploaded_file is not None:
         image = Image.open(uploaded_file).convert("RGB")
+        st.markdown("<h3 style='text-align: center; color: #2e7d32; margin-top: 30px;'>Detected Insect</h3>", 
+                    unsafe_allow_html=True)
+        
+        # Smart zoom: Crop to center with 1.3x zoom effect (feels like focusing on subject)
+        width, height = original_image.size
+        zoom_factor = 1.4  # Adjust this (1.0 = no zoom, 1.5 = strong zoom)
+        crop_size = (int(width / zoom_factor), int(height / zoom_factor))
+        
+        left = (width - crop_size[0]) // 2
+        top = (height - crop_size[1]) // 2
+        right = left + crop_size[0]
+        bottom = top + crop_size[1]
+        
+        zoomed_image = original_image.crop((left, top, right, bottom))
+        
+        # Display zoomed version prominently like Google Lens
+        st.image(zoomed_image, use_container_width=True)
        
         # Display uploaded image beautifully
         st.markdown("<h3 style='text-align: center; color: #2e7d32;'>Uploaded Image</h3>", unsafe_allow_html=True)
