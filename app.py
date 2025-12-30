@@ -423,6 +423,16 @@ def classification_page():
     </div>
     """, unsafe_allow_html=True)
 
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        uploaded_file = st.file_uploader(
+            "",
+            type=["jpg", "jpeg", "png"],
+            label_visibility="collapsed",
+            help="Supported: JPG, PNG | Max size: 10MB"
+        )
+
+
     # ---------------- Photo Tips with Animation Style ----------------
     st.markdown("""
     <div style="background: #f1f8e9; border-radius: 16px; padding: 20px; margin-bottom: 25px; border-left: 5px solid #4caf50;">
@@ -453,15 +463,7 @@ def classification_page():
     """, unsafe_allow_html=True)
 
     # ---------------- Professional File Uploader ----------------
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        uploaded_file = st.file_uploader(
-            "",
-            type=["jpg", "jpeg", "png"],
-            label_visibility="collapsed",
-            help="Supported: JPG, PNG | Max size: 10MB"
-        )
-
+    
     # ---------------- If Image Uploaded → Process ----------------
     if uploaded_file is not None:
         image = Image.open(uploaded_file).convert("RGB")
