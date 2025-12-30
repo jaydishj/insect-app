@@ -237,11 +237,11 @@ def intro_page():
             st.session_state.page = "classification"
     st.divider()
 
-    col_a, col_b = st.columns(2)
+    col_a, col_b, col_c = st.columns(3)
     with col_a:
         if st.button("ℹ️ About App"):
             st.session_state.page = "about_app"
-    with col_b:
+    with col_c:
         if st.button("👨‍🔬 Developers"):
             st.session_state.page = "developers"
 
