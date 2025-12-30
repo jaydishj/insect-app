@@ -431,41 +431,7 @@ def classification_page():
             label_visibility="collapsed",
             help="Supported: JPG, PNG | Max size: 10MB"
         )
-
-
-    # ---------------- Photo Tips with Animation Style ----------------
-    st.markdown("""
-    <div style="background: #f1f8e9; border-radius: 16px; padding: 20px; margin-bottom: 25px; border-left: 5px solid #4caf50;">
-        <h4 style="color: #2e7d32; text-align: center;">💡 Best Tips for Accurate Results</h4>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
-            <div style="text-align: center;">
-                <div style="font-size: 40px; margin-bottom: 8px;">📸</div>
-                <b>Clear & Focused</b><br>
-                <small>Get close, keep the insect sharp</small>
-            </div>
-            <div style="text-align: center;">
-                <div style="font-size: 40px; margin-bottom: 8px;">☀️</div>
-                <b>Natural Light</b><br>
-                <small>Avoid shadows, use daylight</small>
-            </div>
-            <div style="text-align: center;">
-                <div style="font-size: 40px; margin-bottom: 8px;">👀</div>
-                <b>Multiple Angles</b><br>
-                <small>Side, top, wings if visible</small>
-            </div>
-            <div style="text-align: center;">
-                <div style="font-size: 40px; margin-bottom: 8px;">👐</div>
-                <b>Plain Background</b><br>
-                <small>Leaf, wall, or hand works best</small>
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # ---------------- Professional File Uploader ----------------
-    
-    # ---------------- If Image Uploaded → Process ----------------
-    if uploaded_file is not None:
+        if uploaded_file is not None:
         image = Image.open(uploaded_file).convert("RGB")
         
         # Display uploaded image beautifully
@@ -525,6 +491,41 @@ def classification_page():
                 st.error(details.get("Chemical Control", "Not available"))
             else:
                 st.warning("🔍 Detailed information for this species is not yet available in our database.")
+
+
+    # ---------------- Photo Tips with Animation Style ----------------
+    st.markdown("""
+    <div style="background: #f1f8e9; border-radius: 16px; padding: 20px; margin-bottom: 25px; border-left: 5px solid #4caf50;">
+        <h4 style="color: #2e7d32; text-align: center;">💡 Best Tips for Accurate Results</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
+            <div style="text-align: center;">
+                <div style="font-size: 40px; margin-bottom: 8px;">📸</div>
+                <b>Clear & Focused</b><br>
+                <small>Get close, keep the insect sharp</small>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-size: 40px; margin-bottom: 8px;">☀️</div>
+                <b>Natural Light</b><br>
+                <small>Avoid shadows, use daylight</small>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-size: 40px; margin-bottom: 8px;">👀</div>
+                <b>Multiple Angles</b><br>
+                <small>Side, top, wings if visible</small>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-size: 40px; margin-bottom: 8px;">👐</div>
+                <b>Plain Background</b><br>
+                <small>Leaf, wall, or hand works best</small>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # ---------------- Professional File Uploader ----------------
+    
+    # ---------------- If Image Uploaded → Process ----------------
+    
 
         # Back Button
         st.markdown("---")
