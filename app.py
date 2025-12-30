@@ -9,17 +9,30 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 # Page Configuration
 # --------------------------------------------------
 # Hide hamburger menu, footer, header, and toolbar completely
-hide_streamlit_style = """
+# Hide Streamlit's top-right menu (hamburger ☰), Manage app, Deploy button, toolbar, footer, etc.
+hide_streamlit_elements = """
     <style>
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    .stDeployButton {display: none !important;}   /* Hide Deploy button */
-    .stApp > header {display: none !important;}
+    /* Hide the main hamburger menu */
+    #MainMenu {visibility: hidden !important;}
+    
+    /* Hide the toolbar (new in recent versions) */
     .stToolbar {display: none !important;}
+    
+    /* Hide Deploy button */
+    .stDeployButton {display: none !important;}
+    
+    /* Hide header bar */
+    header {visibility: hidden !important;}
+    
+    /* Hide footer ("Made with Streamlit") */
+    footer {visibility: hidden !important;}
+    
+    /* Extra safety for any new elements */
+    [data-testid="stToolbar"] {display: none !important;}
+    [data-testid="manage-app-button"] {display: none !important;}
     </style>
 """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+st.markdown(hide_streamlit_elements, unsafe_allow_html=True)
 
 # Optional: make the page look even cleaner
 st.markdown("""
