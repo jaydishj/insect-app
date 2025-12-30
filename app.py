@@ -234,16 +234,22 @@ def intro_page():
     col1, col2, col3 = st.columns(3)
     with col2:
         if st.button("🔍 Start Identification", use_container_width=True):
-            st.session_state.page = "classification"
+            with st.spinner("Wait Loading..."):
+              st.session_state.page = "classification"
+              st.rerun()
     st.divider()
 
     col_a, col_b, col_c, col_d = st.columns(4)
     with col_a:
         if st.button("ℹ️ About App"):
-            st.session_state.page = "about_app"
+            with st.spinner("Wait Loading..."):
+              st.session_state.page = "about_app"
+              st.rerun()
     with col_d:
         if st.button("👨‍🔬 Developers"):
-            st.session_state.page = "developers"
+            with st.spinner("Wait Loading..."):
+                 st.session_state.page = "developers"
+                 st.rerun()
 
 def about_app_page():
      st.title("ℹ️ About INSECTIFICA")
@@ -281,9 +287,13 @@ def about_app_page():
 
      st.divider()
      if st.button("➡️ Features & Use Cases"):
-        st.session_state.page = "features"
+         with st.spinner("Wait Loading..."):
+          st.session_state.page = "features"
+          st.rerun()
      if st.button("⬅️ Back"):
-        st.session_state.page = "intro"
+         with st.spinner("Wait Loading..."):
+          st.session_state.page = "intro"
+          st.rerun()
 
 def features_page():
      st.title("✨ Features & Use Cases")
@@ -373,9 +383,13 @@ def features_page():
       • Ensure wings, legs, and antennae are visible
       """)
      if st.button("👨‍🔬 Developers"):
+          with st.spinner("Wait Loading..."):
             st.session_state.page = "developers"
+            st.rerun()
      if st.button("⬅️ Back"):
+          with st.spinner("Wait Loading..."):
             st.session_state.page = "about_app"
+            st.rerun()
 
 def developers_page():
      st.title("👨‍🔬 Development Team")
@@ -408,7 +422,10 @@ def developers_page():
     """)
 
      if st.button("⬅️ Back to Home"):
+         with st.spinner("Wait Loading..."):
          st.session_state.page = "intro"
+         st.rerun()
+
 
 def classification_page():
     st.title("🔍 Insect Identification")
@@ -527,6 +544,7 @@ def classification_page():
         col_back1, col_back2, col_back3 = st.columns([1, 1, 1])
         with col_back2:
             if st.button("⬅️ Back to Home", use_container_width=True):
+                 with st.spinner("Wait Loading..."):
                 st.session_state.page = "intro"
                 st.rerun()
     
@@ -539,6 +557,7 @@ def classification_page():
         col_a, col_b, col_c = st.columns([1, 2, 1])
         with col_b:
             if st.button("⬅️ Back to Home", use_container_width=True, key="back_no_image"):
+                 with st.spinner("Wait Loading..."):
                 st.session_state.page = "intro"
                 st.rerun()
 # --------------------------------------------------
