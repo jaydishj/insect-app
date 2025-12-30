@@ -411,64 +411,70 @@ def developers_page():
          st.session_state.page = "intro"
 
 def classification_page():
-    st.title("🔍 Insect Identification")
+    st.title("Insect Identification")
 
-    # ---------------- Professional Header Card ----------------
+    # ---------------- PROFESSIONAL UPLOADER CARD AT THE TOP ----------------
     st.markdown("""
-    <div class="card" style="text-align: center; padding: 20px; margin-bottom: 30px;">
-        <h2 style="color: #2e7d32; margin-bottom: 10px;">📸 Upload or Snap a Photo</h2>
-        <p style="font-size: 16px; color: #1b5e20;">
-            Take a clear photo of the insect or upload from your gallery for instant AI-powered identification.
+    <div class="card" style="text-align: center; padding: 30px; margin-bottom: 30px; background: linear-gradient(135deg, #e8f5e9, #f1f8e9);">
+        <h2 style="color: #2e7d32; margin: 0 0 15px 0;">Upload or Take a Photo</h2>
+        <p style="color: #1b5e20; font-size: 17px; margin-bottom: 25px;">
+            Snap a clear photo of the insect or upload from your gallery
         </p>
     </div>
     """, unsafe_allow_html=True)
 
-    # ---------------- Photo Tips with Animation Style ----------------
+    # ---------------- CENTERED, PROFESSIONAL FILE UPLOADER ----------------
+    col1, col2, col3 = st.columns([1, 3, 1])
+    with col2:
+        uploaded_file = st.file_uploader(
+            "Choose an image or use camera",
+            type=["jpg", "jpeg", "png"],
+            label_visibility="collapsed",
+            help="Best results: clear, well-lit photo of one insect"
+        )
+
+    # Add a small hint for mobile users
+    if 'mobile' in st.session_state.get('user_agent', '').lower():
+        st.caption("Tip: On phone? Tap above to open camera directly")
+
+    st.markdown("---")
+
+    # ---------------- PHOTO TIPS SECTION (Below uploader) ----------------
     st.markdown("""
-    <div style="background: #f1f8e9; border-radius: 16px; padding: 20px; margin-bottom: 25px; border-left: 5px solid #4caf50;">
-        <h4 style="color: #2e7d32; text-align: center;">💡 Best Tips for Accurate Results</h4>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
-            <div style="text-align: center;">
-                <div style="font-size: 40px; margin-bottom: 8px;">📸</div>
-                <b>Clear & Focused</b><br>
-                <small>Get close, keep the insect sharp</small>
+    <div style="background: #f8fff8; border-radius: 16px; padding: 20px; margin: 20px 0; border: 1px solid #c8e6c9;">
+        <h4 style="text-align: center; color: #2e7d32; margin-top: 0;">Best Tips for Accurate Identification</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px;">
+            <div style="text-align: center; padding: 10px;">
+                <div style="font-size: 45px; margin-bottom: 10px;">Focus</div>
+                <b>Get Close & Sharp</b><br>
+                <small>Fill the frame with the insect</small>
             </div>
-            <div style="text-align: center;">
-                <div style="font-size: 40px; margin-bottom: 8px;">☀️</div>
-                <b>Natural Light</b><br>
-                <small>Avoid shadows, use daylight</small>
+            <div style="text-align: center; padding: 10px;">
+                <div style="font-size: 45px; margin-bottom: 10px;">Sun</div>
+                <b>Natural Daylight</b><br>
+                <small>Avoid dark shadows or flash</small>
             </div>
-            <div style="text-align: center;">
-                <div style="font-size: 40px; margin-bottom: 8px;">👀</div>
-                <b>Multiple Angles</b><br>
-                <small>Side, top, wings if visible</small>
+            <div style="text-align: center; padding: 10px;">
+                <div style="font-size: 45px; margin-bottom: 10px;">Angles</div>
+                <b>Side & Top View</b><br>
+                <small>Show wings, legs, antennae</small>
             </div>
-            <div style="text-align: center;">
-                <div style="font-size: 40px; margin-bottom: 8px;">👐</div>
+            <div style="text-align: center; padding: 10px;">
+                <div style="font-size: 45px; margin-bottom: 10px;">Background</div>
                 <b>Plain Background</b><br>
-                <small>Leaf, wall, or hand works best</small>
+                <small>Leaf, wall, or hand is ideal</small>
             </div>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    # ---------------- Professional File Uploader ----------------
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        uploaded_file = st.file_uploader(
-            "",
-            type=["jpg", "jpeg", "png"],
-            label_visibility="collapsed",
-            help="Supported: JPG, PNG | Max size: 10MB"
-        )
-
-    # ---------------- If Image Uploaded → Process ----------------
+    # ---------------- PROCESS UPLOADED IMAGE ----------------
     if uploaded_file is not None:
         image = Image.open(uploaded_file).convert("RGB")
-        
-        # Display uploaded image beautifully
+
+        # Display uploaded image
         st.markdown("<h3 style='text-align: center; color: #2e7d32;'>Uploaded Image</h3>", unsafe_allow_html=True)
-        st.image(image, use_container_width=True, caption="Ready for analysis")
+        st.image(image, use_container_width=True)
 
         # Preprocess and predict
         img = image.resize((190, 190))
@@ -476,7 +482,7 @@ def classification_page():
         img_array = preprocess_input(img_array)
         img_array = np.expand_dims(img_array, axis=0)
 
-        with st.spinner("🤖 AI is analyzing the insect... Please wait a moment"):
+        with st.spinner("AI is identifying the insect..."):
             predictions = model.predict(img_array)
             predicted_idx = np.argmax(predictions[0])
             confidence = predictions[0][predicted_idx]
@@ -484,66 +490,65 @@ def classification_page():
         st.markdown("---")
 
         if predicted_idx >= len(class_names):
-            st.error("⚠️ Unable to classify. Please try a clearer image of a single insect.")
+            st.error("Unable to identify. Please upload a clearer image of a single insect.")
         else:
             predicted_class = class_names[predicted_idx]
 
-            # Confidence bar with animation feel
-            st.success(f"**Identified Species:** {predicted_class}")
+            st.success(f"**Identified as:** {predicted_class}")
             st.progress(confidence)
-            st.write(f"**Confidence Level:** {confidence:.1%}")
+            st.write(f"**Confidence:** {confidence:.1%}")
 
-            # Detailed Info
+            # Show details
             if predicted_class in insect_data:
                 details = insect_data[predicted_class]
 
-                st.markdown("## 🧬 Taxonomic Classification")
-                col_k, col_p, col_c = st.columns(3)
-                with col_k: st.write(f"**Kingdom:** {details.get('Kingdom', 'N/A')}")
-                with col_p: st.write(f"**Phylum:** {details.get('Phylum', 'N/A')}")
-                with col_c: st.write(f"**Class:** {details.get('Class', 'N/A')}")
+                st.markdown("## Taxonomic Classification")
+                cols = st.columns(3)
+                with cols[0]:
+                    st.write(f"**Kingdom:** {details.get('Kingdom', 'N/A')}")
+                    st.write(f"**Phylum:** {details.get('Phylum', 'N/A')}")
+                with cols[1]:
+                    st.write(f"**Class:** {details.get('Class', 'N/A')}")
+                    st.write(f"**Order:** {details.get('Order', 'N/A')}")
+                with cols[2]:
+                    st.write(f"**Family:** {details.get('Family', 'N/A')}")
+                    st.write(f"**Genus:** {details.get('Genus', 'N/A')}")
 
-                col_o, col_f = st.columns(2)
-                with col_o: st.write(f"**Order:** {details.get('Order', 'N/A')}")
-                with col_f: st.write(f"**Family:** {details.get('Family', 'N/A')}")
-
-                st.write(f"**Genus:** {details.get('Genus', 'N/A')}")
                 st.write(f"**Species:** {details.get('Species', 'N/A')}")
 
-                st.markdown("## 🌿 Host Crops")
+                st.markdown("## Host Crops")
                 st.info(details.get("Host Crops", "Not available"))
 
-                st.markdown("## 🐛 Damage Symptoms")
+                st.markdown("## Damage Symptoms")
                 st.warning(details.get("Damage Symptoms", "Not available"))
 
-                st.markdown("## 🛡️ Integrated Pest Management (IPM)")
+                st.markdown("## IPM Measures")
                 st.success(details.get("IPM Measures", "Not available"))
 
-                st.markdown("## ⚠️ Chemical Control (If Needed)")
+                st.markdown("## Chemical Control")
                 st.error(details.get("Chemical Control", "Not available"))
             else:
-                st.warning("🔍 Detailed information for this species is not yet available in our database.")
+                st.warning("Detailed information for this species is not yet in our database.")
 
-        # Back Button
+        # Back button after result
         st.markdown("---")
-        col_back1, col_back2, col_back3 = st.columns([1, 1, 1])
-        with col_back2:
-            if st.button("⬅️ Back to Home", use_container_width=True):
+        col_b1, col_b2, col_b3 = st.columns([1, 1, 1])
+        with col_b2:
+            if st.button("Back to Home", use_container_width=True):
                 st.session_state.page = "intro"
                 st.rerun()
 
     else:
-        # No image uploaded yet
-        st.info("👆 Please upload or take a photo of the insect to start identification.")
+        # No image yet — show prompt
+        st.info("Please upload or take a photo above to identify the insect.")
 
-        # Always show back button at bottom
-        st.markdown("---")
-        col_a, col_b, col_c = st.columns([1, 2, 1])
-        with col_b:
-            if st.button("⬅️ Back to Home", use_container_width=True, key="back_no_image"):
-                st.session_state.page = "intro"
-                st.rerun()
-
+    # Always show back button at bottom
+    st.markdown("---")
+    col_f1, col_f2, col_f3 = st.columns([1, 2, 1])
+    with col_f2:
+        if st.button("Back to Home", use_container_width=True, key="final_back"):
+            st.session_state.page = "intro"
+            st.rerun()
 
 # --------------------------------------------------
 # Page Routing
