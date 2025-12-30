@@ -460,7 +460,7 @@ def classification_page():
     # ---------------- Professional Header Card ----------------
     st.markdown("""
     <div class="card" style="text-align: center; padding: 20px; margin-bottom: 30px;">
-        <h2 style="color: #2e7d32; margin-bottom: 10px;">📸 Upload or Snap a Photo</h2>
+        <h2 style="color: #2e7d32; margin-bottom: 10px;">📸 Upload or Snap a Photo ⬇️</h2>
         <p style="font-size: 16px; color: #1b5e20;">
             Take a clear photo of the insect or upload from your gallery for instant AI-powered identification.
         </p>
