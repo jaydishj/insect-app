@@ -423,8 +423,8 @@ def developers_page():
 
      if st.button("⬅️ Back to Home"):
          with st.spinner("Wait Loading..."):
-           st.session_state.page = "intro"
-           st.rerun()
+              st.session_state.page = "intro"
+              st.rerun()
 
 
 def classification_page():
