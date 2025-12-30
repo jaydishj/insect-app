@@ -479,7 +479,7 @@ def classification_page():
         with st.spinner("🤖 AI is analyzing the insect... Please wait a moment"):
             predictions = model.predict(img_array)
             predicted_idx = np.argmax(predictions[0])
-            confidence = predictions[0][predicted_idx]
+            confidence = float(np.max(predictions[0]))  # Safest way: get max prob as clean float
         
         st.markdown("---")
         
