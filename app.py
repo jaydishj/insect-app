@@ -56,7 +56,7 @@ st.markdown("""
 st.set_page_config(
     page_title="INSECTIFICA",
     page_icon="🐞",
-    layout="wide",  # Changed to "wide" for larger screens; mobile adjustments via CSS
+    layout="centered",  # Changed to "wide" for larger screens; mobile adjustments via CSS
     initial_sidebar_state="collapsed"
 )
 
