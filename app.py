@@ -176,7 +176,7 @@ st.markdown("""
                 padding-right: 1.5rem;
             }
             
-            h1 { font-size: 36px !important; }
+            h1 { font-size: 42px !important; }
             h2 { font-size: 28px !important; }
             
             .stButton > button {
