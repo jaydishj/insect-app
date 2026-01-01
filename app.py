@@ -62,116 +62,139 @@ st.set_page_config(
 # Custom CSS
 # --------------------------------------------------
 st.markdown("""
-<style>
-
 /* --------------------------------------------------
-   GLOBAL APP THEME
+   GLOBAL THEME (Mobile First)
 -------------------------------------------------- */
-.stApp {
-    background: linear-gradient(139deg, #f6fff8, #e8f5e9);
-    color: #1b5e20;
-    font-family: "Segoe UI", "Roboto", sans-serif;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(139deg, #f6fff8, #e8f5e9);
+  color: #1b5e20;
+}
+
+.app {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
 }
 
 /* --------------------------------------------------
    HEADINGS
 -------------------------------------------------- */
-h1, h2, h3, h4, h5, h6 {
-    text-align: center;
-    color: #1b5e20 !important;
-    font-weight: 700;
+h1, h2, h3 {
+  text-align: center;
+  color: #1b5e20;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-weight: 500;
+  margin-bottom: 25px;
 }
 
 /* --------------------------------------------------
-   BUTTON STYLING
+   BUTTONS
 -------------------------------------------------- */
-.stButton > button {
-    width: 100%;
-    border-radius: 14px;
-    background: linear-gradient(135deg, #2e7d32, #66bb6a);
-    color: white !important;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 0.75em;
-    border: none;
-    transition: all 0.2s ease-in-out;
+.primary-btn {
+  width: 100%;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2e7d32, #66bb6a);
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 14px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
 }
 
-/* Hover effect */
-.stButton > button:hover {
-    background: linear-gradient(135deg, #388e3c, #81c784);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-    transform: translateY(-1px);
+.primary-btn:hover {
+  background: linear-gradient(135deg, #388e3c, #81c784);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
-/* Active (click) effect */
-.stButton > button:active {
-    background: linear-gradient(135deg, #1b5e20, #43a047) !important;
-    transform: scale(0.97);
-}
-
-/* Disabled / loading look */
-button[disabled] {
-    background: linear-gradient(135deg, #1b5e20, #66bb6a) !important;
-    opacity: 0.75;
-    cursor: wait;
+.primary-btn:active {
+  transform: scale(0.97);
 }
 
 /* --------------------------------------------------
-   FILE UPLOADER
+   FILE UPLOADER STYLE
 -------------------------------------------------- */
-[data-testid="stFileUploader"] {
-    border: 2px dashed #2e7d32;
-    border-radius: 16px;
-    padding: 1em;
-    background-color: #f1f8e9;
+.file-upload {
+  border: 2px dashed #2e7d32;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  background: #f1f8e9;
 }
 
 /* --------------------------------------------------
    IMAGES
 -------------------------------------------------- */
 img {
-    border-radius: 16px;
-    max-width: 100%;
+  max-width: 100%;
+  border-radius: 16px;
+  display: block;
+  margin: 15px auto;
 }
 
 /* --------------------------------------------------
    CARD UI
 -------------------------------------------------- */
 .card {
-    background: white;
-    border-radius: 18px;
-    padding: 20px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-    margin-bottom: 22px;
-    color: #1b5e20;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  margin-bottom: 22px;
 }
 
 /* --------------------------------------------------
    FOOTER
 -------------------------------------------------- */
 .footer {
-    text-align: center;
-    font-size: 13px;
-    color: #2e7d32 !important;
-    margin-top: 30px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #2e7d32;
+  margin-top: 30px;
 }
 
 /* --------------------------------------------------
-   MOBILE RESPONSIVENESS
+   TABLET RESPONSIVENESS
 -------------------------------------------------- */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 34px !important;
-    }
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.6rem;
+  }
 
-    .stButton > button {
-        font-size: 16px;
-        padding: 0.65em;
-    }
+  .primary-btn {
+    font-size: 1.2rem;
+  }
+
+  .app {
+    padding: 30px;
+  }
 }
 
-</style>
+/* --------------------------------------------------
+   DESKTOP RESPONSIVENESS
+-------------------------------------------------- */
+@media (min-width: 1024px) {
+  .app {
+    max-width: 1000px;
+  }
+}
+
 """, unsafe_allow_html=True)
 
 
