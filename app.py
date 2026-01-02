@@ -511,8 +511,7 @@ def developers_page():
 
 def classification_page():
     st.title("🔍 Insect Identification")
-    
-    # ---------------- Professional Header Card ----------------
+
     st.markdown("""
     <div class="card" style="text-align: center; padding: 20px; margin-bottom: 30px;">
         <h2 style="color: #2e7d32; margin-bottom: 10px;">📸 Upload or Snap a Photo ⬇️</h2>
@@ -521,16 +520,41 @@ def classification_page():
         </p>
     </div>
     """, unsafe_allow_html=True)
-    
-    # ---------------- Centered File Uploader ----------------
+
+    # ---------------- Centered Input Section ----------------
     col1, col2, col3 = st.columns([1, 2, 1])
+    image = None
+
     with col2:
-        uploaded_file = st.file_uploader(
-            "",
-            type=["jpg", "jpeg", "png"],
-            label_visibility="collapsed",
-            help="Supported: JPG, PNG | Max size: 10MB"
+        input_method = st.radio(
+            "Select Image Source",
+            ["Upload Image", "Use Camera"],
+            horizontal=True
         )
+
+        if input_method == "Upload Image":
+            uploaded_file = st.file_uploader(
+                "",
+                type=["jpg", "jpeg", "png"],
+                label_visibility="collapsed",
+                help="Supported: JPG, PNG | Max size: 10MB"
+            )
+            if uploaded_file:
+                image = uploaded_file
+
+        elif input_method == "Use Camera":
+            camera_image = st.camera_input(
+                "",
+                label_visibility="collapsed"
+            )
+            if camera_image:
+                image = camera_image
+
+    # ---------------- Image Preview ----------------
+
+
+    
+
     
     # ---------------- Photo Tips Section (Always Visible) ----------------
     st.markdown("""
