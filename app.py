@@ -587,7 +587,7 @@ def classification_page():
     
     # ---------------- Image Processing (Only if uploaded) ----------------
     if uploaded_file is not None:
-        image = Image.open(uploaded_file).convert("RGB")
+        image = Image.open(image).convert("RGB")
        
         # Display uploaded image beautifully
         st.markdown("<h3 style='text-align: center; color: #2e7d32;'>Uploaded Image</h3>", unsafe_allow_html=True)
