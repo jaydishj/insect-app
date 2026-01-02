@@ -586,7 +586,7 @@ def classification_page():
     """, unsafe_allow_html=True)
     
     # ---------------- Image Processing (Only if uploaded) ----------------
-    if uploaded_file is not None:
+    if image is not None:
         image = Image.open(image).convert("RGB")
        
         # Display uploaded image beautifully
